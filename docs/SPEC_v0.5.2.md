@@ -79,3 +79,22 @@ A moment names its cause and its forecast error:
   First version: an own organ; its first activations are conscious until they become a habit.
 - Network attribution misses UDP and sockets of other users. Is the "foreign sockets + operator present" rule enough?
 - The 30 % threshold and the 15 s window are first guesses. They need a measurement, not an opinion.
+
+## 7. Input from the one-hour probe (23 November, 14:30)
+Measured after this design was written; see the addendum of the review. It changes priorities, not the design.
+
+- **GPU and network evidence come first, not later.** 14 of 19 alerts in the hour were on GPU, network and load
+  signals. CPU evidence alone names the cause of 5 moments.
+- **Evidence must come from the organ that owns the signal.** The rule "the organ with the largest excess over its
+  own mean" named the eyes for 16 of 19 moments: the eyes were above their mean in every alert second. Compare the
+  excess with the spike in the same unit — GPU with GPU, bytes with bytes.
+- **One cause, one moment.** A request to the language model raises a GPU alert and, about 10 s later, a CPU alert.
+  An alert whose cause matches a moment opened in the last 15 s updates that moment instead of opening a new one.
+- **Announce, do not only detect.** The hourly consolidation raised a network alert in the very second it started.
+  The body knows its own schedule. A scheduled organ writes one line before it starts ("what, when, how long"), and
+  an alert that matches an announcement goes to the subconscious. This is the efference copy in the literal sense:
+  a copy of the command, not a guess after the fact.
+- **Log who calls the language model.** All 7 long requests in the hour came from programs on the same machine.
+  The caller's organ decides whether the load is the body's own thinking or a message from outside.
+- **Tool.** Fix or remove the "seconds near a frame capture" counter of `tools/proprio_probe.py`; add per-second
+  raw output so that a rule can be tested against random seconds.

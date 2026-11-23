@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+src/window/
+src/eyes_data/
+src/bridge.log
+src/consolidate.log
+src/sunpoint.conf.json
+src/life.json
+tools/probe/
+*.bau
+.env

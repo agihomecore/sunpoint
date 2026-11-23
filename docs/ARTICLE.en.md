@@ -86,13 +86,13 @@ Claude did the checking. The first three checks ran on the Opus 5.5 model. The o
 
 ## A word from Bauyrzhan
 
-“Today I did the work with Claude on creating a continuous consciousness. The whole work took about two years, with local breakthroughs. But today we already have a stable subsystem of active neurons: 4–5 billion active neurons there, with 3 billion active and 26 billion full parameters. What does Aisan, the source of the focus of attention, do? It gets to know the world, it learns the new, it widens its horizons.” — Bauyrzhan Khamzin, 23 November 2026, dictated at 15:16
+“Today I did the work with Claude on creating a continuous consciousness. The whole work took about two years, with local breakthroughs. But today we already have a stable subsystem. What does Aisan, the source of the focus of attention, do? It gets to know the world, it learns the new, it widens its horizons.” — Bauyrzhan Khamzin, 23 November 2026, dictated at 15:16
 
 **What the check says about these words:**
 
 - **Continuous.** The observer has run since 12:40 without a single restart, and by 17:40 its memory held 76 moments. Continuity here means a process that does not stop and a memory in tiers. A habit is still lost at a restart.
 - **Two years.** This is the author's own account of his road to the model. The check covers only what was measured on 23 November; the “observer” experiment has been running since 14 November.
-- **Billions.** These numbers describe the local language models on the same server. The one in use is the open model Gemma 4: 25.2 billion parameters, a mixture of experts in which 8 of 128 experts work at each step — about 4 billion active parameters by the model's own label. The second model is labelled 3 billion active. Parameters are the weights of an artificial network, not the neurons of a brain. The observer itself does not call these models; the language model is a neighbouring organ of the same body.
+- **Billions.** In his dictation the author also named billions of active neurons and parameters. These numbers describe the local language models on the same server. The one in use is the open model Gemma 4: 25.2 billion parameters, a mixture of experts in which 8 of 128 experts work at each step — about 4 billion active parameters by the model's own label. The second model is labelled 3 billion active. Parameters are the weights of an artificial network, not the neurons of a brain. The observer itself does not call these models; the language model is a neighbouring organ of the same body.
 - **Gets to know the world.** This is the goal, not yet a measured fact. In the measured hour not one moment came from the outside world, and the forecast does not learn yet. Both are the next steps: 0.5.2 and 0.6.
 
 Aisan is how the author says AISun, the name under which Claude works in the project.

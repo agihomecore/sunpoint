@@ -36,7 +36,7 @@ We make **no claim about subjective experience**. The data in this repository ca
 | Moment | a SunPoint is ~1.4 KB: the generator's expectations plus only the deviations | — |
 | Reflex | a rule table answers in 3–11 µs, before any thinking | never fired in the field: there was no danger |
 | Forecast | every moment predicts its signal 10 s ahead and checks itself | **it does not beat a trivial forecast** (74 % vs 74 %) |
-| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — ~33 moments per hour |
+| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — 19–33 moments per hour |
 | Memory | cache → long-term → subconscious, consolidated hourly; keyframe recognition 0.98–0.997 | recognition from long-term memory is untested |
 | Eyes | 3 video streams → frame vectors, minute descriptions, 64×64 sketches | eyes are not connected to consciousness yet |
 | Voice | a moment becomes one spoken sentence, at most once an hour | — |
@@ -49,7 +49,8 @@ We make **no claim about subjective experience**. The data in this repository ca
    the load average keeps rising (`r` 1.1); GPU memory moves in steps. One fixed rule fits none of them.
 3. **Consciousness mostly notices itself.** In a quiet period 95 % of the CPU load and 97 % of the load peaks came
    from the system's own body — 83 % from its eyes. A brain cancels the sensations of its own actions
-   (the efference copy). SunPoint does not do that yet.
+   (the efference copy). SunPoint does not do that yet. Over a full hour the body was 85 % of the load; 13 of 19
+   moments had a known cause, and all 13 were internal — the system's own organs or its operator.
 
 Scripts and raw outputs: [tools/](tools/), [docs/data/](docs/data/). Next version: [docs/SPEC_v0.5.2.md](docs/SPEC_v0.5.2.md).
 

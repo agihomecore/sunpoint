@@ -15,3 +15,9 @@ Other parts, same day: memory streams (cache / long-term / subconscious), eyes 0
 voice on loudspeakers (13:04).
 
 **0.5.1 is the first public version.** Next: 0.5.2 — see `docs/SPEC_v0.5.2.md`.
+
+## 23 November, 14:30 — review addendum
+- One-hour probe added to the review (`docs/REVIEW_2026-11-23.md`, Addendum) with its raw output in `docs/data/`.
+- Found by the probe and fixed on the reference server: the full-frame capture had been running twice.
+- `docs/SPEC_v0.5.2.md`, section 7: what the hour changes for 0.5.2.
+- Articles: the rate is now given as 19–33 moments per hour; the text says who wrote it.

@@ -1,0 +1,42 @@
+State of the reference server, 23 November 2026, 17:37 Astana time (UTC+5).
+Outputs as printed. The data directory, the host name and the local alias of the model are replaced by placeholders.
+
+$ cat <data dir>/heartbeat.json
+{"t": "2026-11-23 17:37:42", "t_unix": 1795437461.3969638, "clean": false, "stats": {"alerts": 73, "sunpoints": 73, "reflex": 0, "forecast_ok": 42, "forecast_n": 71, "subconscious": 1752, "deferred": 73, "recalled": 67, "rp_ok": 73, "rp_err": 0, "started": "2026-11-23 12:40:24", "bytes_saved": 106374}, "pid": 2519588}
+
+$ systemctl show sunpoint-observer -p ActiveState -p ActiveEnterTimestamp -p NRestarts
+NRestarts=0
+ActiveState=active
+ActiveEnterTimestamp=Mon 2026-11-23 07:40:24 UTC
+
+$ find <data dir>/sunpoints -type f | wc -l
+76
+
+$ grep -a -c SUNPOINT <data dir>/log.txt
+76
+
+$ grep -a SUNPOINT <data dir>/log.txt | cut -c12-16 | paste -sd, -
+12:34,12:34,12:39,12:48,12:48,12:48,12:53,12:53,12:55,12:55,12:57,12:58,12:59,13:00,13:01,13:03,13:04,13:05,13:06,13:16,13:17,13:19,13:21,13:21,13:22,13:26,13:26,13:28,13:30,13:30,13:34,13:35,13:35,13:44,13:44,13:55,13:55,14:01,14:04,14:07,14:12,14:17,14:22,14:33,14:36,14:45,14:45,14:57,15:00,15:00,15:00,15:07,15:07,15:17,15:19,15:22,15:30,15:36,15:37,15:38,16:07,16:09,16:14,16:17,16:22,16:30,16:40,16:54,16:59,17:07,17:08,17:10,17:14,17:17,17:22,17:30
+
+Note: the service counts 73 moments since its start at 12:40:24; three more were written by the first run of
+v0.5 at 12:33-12:39, before the service existed. Per hour from 12:34: 30, 14, 13, 9, 10.
+
+$ ollama show <local model>
+  Model
+    architecture        gemma4
+    parameters          25.2B
+    context length      262144
+    embedding length    2816
+    quantization        Q4_K_M
+
+$ ollama show <local model> --verbose | grep -iE 'size_label|basename|expert|block_count|parameter_count'
+    gemma4.block_count                         30
+    gemma4.expert_count                        128
+    gemma4.expert_feed_forward_length          704
+    gemma4.expert_used_count                   8
+    general.basename                           Gemma-4-26B-A4B-It
+    general.parameter_count                    2.5233142046e+10
+    general.size_label                         26B-A4B
+
+The observer does not call this model (review, A.3). It is listed here because the author's statement of 15:16
+quotes its size.

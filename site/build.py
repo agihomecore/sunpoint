@@ -165,6 +165,7 @@ li b{font-weight:650}
 .bars .bar i.t{background:linear-gradient(90deg,var(--teal),var(--turq))}
 .bars .bar i.g{background:#9db0c4}
 .bars .note{font-size:.93rem;color:var(--ink2);margin:.7rem 0 0}
+.aside{font-size:.93rem;color:var(--ink2)}
 .pair{display:grid;gap:0 1.6rem}
 @media (min-width:44rem){.pair{grid-template-columns:1fr 1fr}}
 .word{margin:0;padding:1.3rem 1.25rem 1.4rem;background:linear-gradient(180deg,#071a36,#0c2c66);color:var(--hot);border-radius:.8rem}
@@ -207,14 +208,16 @@ def page(host, deflang):
     ledger = "".join(f'<div class="{st}"><dt>{t(q)}</dt><dd class="v">{t(v)}</dd><dd class="w">{t(w)}</dd></div>'
                      for q, v, w, st in [("q1", "v1", "w1", "ok"), ("q2", "v2", "w2", "half"), ("q3", "v3", "w3", "ok"), ("q4", "v4", "w4", "half")])
     built = "".join(f'<li><b>{t(f"b{i}_t")}</b> {t(f"b{i}")}</li>' for i in range(1, 8))
+    bau = "".join(f'<li><b>{t(f"bau{i}_t")}</b> {t(f"bau{i}")}</li>' for i in range(1, 5))
     states = ["ok", "half", "half", "half", "no", "half", "ok", "na"]
     chk = "".join(f'<div class="{st}"><div class="c">{t(f"c{i}")}</div><div class="m">{t(f"m{i}")}</div><div class="r">{t(f"r{i}")}</div></div>'
                   for i, st in enumerate(states, 1))
-    ch1 = bars("ch1_t", [("ch1_a", "30", 100, ""), ("ch1_b", "14", 46.7, ""), ("ch1_c", "≈10", 33.3, "")], "ch1_n")
+    ch1 = bars("ch1_t", [("ch1_a", "30", 100, ""), ("ch1_b", "14", 46.7, ""), ("ch1_c", "13", 43.3, ""),
+                         ("ch1_d", "9", 30, ""), ("ch1_e", "10", 33.3, "")], "ch1_n")
     ch2 = bars("ch2_t", [("ch2_a", "6", 100, ""), ("ch2_b", "5", 83.3, ""), ("ch2_c", "1", 16.7, ""), ("ch2_d", "1", 16.7, ""),
                          ("ch2_e", "6", 100, "g"), ("ch2_f", "0", 0, "")])
-    ch3 = bars("ch3_t", [("ch3_a", num("0.62", "0,62"), 100, "g"), ("ch3_b", num("0.54", "0,54"), 87.1, "g"),
-                         ("ch3_c", num("0.40", "0,40"), 64.5, ""), ("ch3_d", num("0.35", "0,35"), 56.5, "t")])
+    ch3 = bars("ch3_t", [("ch3_a", num("0.61", "0,61"), 100, "g"), ("ch3_b", num("0.53", "0,53"), 86.9, "g"),
+                         ("ch3_c", num("0.42", "0,42"), 68.9, ""), ("ch3_d", num("0.34", "0,34"), 55.7, "t")])
     alt = "".join(f'<link rel="alternate" hreflang="{l}" href="{base}?lang={l}">' for l in LANGS)
     review_links = "".join(f'<a class="a2" data-l="{l}" lang="{l}" href="{REVIEW[l]}">{esc(tr("btn_review", l))}</a>' for l in LANGS)
     code_links = "".join(f'<a class="a1" data-l="{l}" lang="{l}" href="{REPO}">{esc(tr("btn_code", l))}</a>' for l in LANGS)
@@ -289,6 +292,12 @@ def page(host, deflang):
   <h3>{t("h_ref")}</h3>
   <ol><li>{t("f1")}</li><li>{t("f2")}</li><li>{t("f3")}</li></ol>
 
+  <h2>{t("h_bau")}</h2>
+  <blockquote class="say"><p>{t("bau_q")}</p><cite>{t("bau_by")}</cite></blockquote>
+  <h3>{t("bau_h")}</h3>
+  <ul>{bau}</ul>
+  <p class="aside">{t("bau_name")}</p>
+
   <h2>{t("h_word")}</h2>
   <blockquote class="word"><p>{t("word")}</p></blockquote>
 
@@ -326,11 +335,14 @@ def article(l):
     L += [f"{g('voice_p')} «{g('voice_q')}»" if l != "en" else f"{g('voice_p')} \"{g('voice_q')}\"", ""]
     L += [f"## {g('h_check')}", "", g("check_p"), "", f"| {g('c_claim')} | {g('c_meas')} | {g('c_verd')} |", "|---|---|---|"]
     L += [f"| {g(f'c{i}')} | {g(f'm{i}')} | **{g(f'r{i}')}** |" for i in range(1, 9)]
-    L += ["", f"**{g('ch1_t')}:** {g('ch1_a')} — 30; {g('ch1_b')} — 14; {g('ch1_c')} — ≈10. {g('ch1_n')}", ""]
+    L += ["", f"**{g('ch1_t')}:** {g('ch1_a')} — 30; {g('ch1_b')} — 14; {g('ch1_c')} — 13; {g('ch1_d')} — 9; {g('ch1_e')} — 10. {g('ch1_n')}", ""]
     L += [f"**{g('ch2_t')}:** {g('ch2_a')} — 6; {g('ch2_b')} — 5; {g('ch2_c')} — 1; {g('ch2_d')} — 1; {g('ch2_e')} — 6; {g('ch2_f')} — 0.", ""]
-    L += [f"**{g('ch3_t')}:** {g('ch3_a')} — {dec('0.62')}; {g('ch3_b')} — {dec('0.54')}; {g('ch3_c')} — {dec('0.40')}; {g('ch3_d')} — {dec('0.35')}.", ""]
+    L += [f"**{g('ch3_t')}:** {g('ch3_a')} — {dec('0.61')}; {g('ch3_b')} — {dec('0.53')}; {g('ch3_c')} — {dec('0.42')}; {g('ch3_d')} — {dec('0.34')}.", ""]
     L += [f"**{g('err_t')}.** {g('err')}", "", f"**{g('who_t')}.** {g('who')}", ""]
     L += [f"## {g('h_not')}", "", f"- {g('n1')}", f"- {g('n2')}", f"- {g('n3')}", "", f"**{g('h_ref')}:**", "", f"1. {g('f1')}", f"2. {g('f2')}", f"3. {g('f3')}", ""]
+    L += [f"## {g('h_bau')}", "", f"{g('bau_q')} — {g('bau_by')}", "", f"**{g('bau_h')}:**", ""]
+    L += [f"- **{g(f'bau{i}_t')}** {g(f'bau{i}')}" for i in range(1, 5)]
+    L += ["", g("bau_name"), ""]
     L += [f"## {g('h_word')}", "", g("word"), ""]
     L += [f"## {g('h_next')}", "", f"- {g('x1')}", f"- {g('x2')}", f"- {g('x3')}", ""]
     L += [f"## {g('h_try')}", "", g("try_p"), "", "```bash", f"git clone {REPO} && cd sunpoint/src", "SPIKE_AT=40 python3 -I sunpoint.py --test 120",

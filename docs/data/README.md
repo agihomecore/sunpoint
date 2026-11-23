@@ -11,6 +11,8 @@ reference deployment speaks Russian; the English tools in `tools/` print the sam
 | `proprio_one_hour.ru.md` | `proprio_probe.py 3600` at 13:18 | the same for one hour, with the moments of consciousness that fell into it |
 | `proprio_after_fix_148s.ru.md` | `proprio_probe.py 150` at 14:25 | control run after the duplicated full-frame capture was stopped |
 | `baseline_45_moments.ru.txt` | `baseline_check.py <data dir>` at 14:54 | forecast vs Mean and Persistence on 45 moments, with a section per signal |
+| `baseline_74_moments.ru.txt` | `baseline_check.py <data dir>` at 17:40 | the same on 74 moments: five hours of work |
+| `state_1737.txt` | the commands are inside the file, 17:37 | the service's own counters and uptime, the times of all 76 moments, the metadata of the local language model |
 
 Glossary for the Russian organ names: глаза: векторы — eyes: vectors; глаза: полные кадры — eyes: full frames;
 память: потоки — memory: streams; память: консолидация — memory: consolidation; наблюдатель v0.5.1 — the observer;

@@ -26,3 +26,10 @@ voice on loudspeakers (13:04).
 - Article rewritten as a claim check: "The beginnings of consciousness — or a fake?" (`docs/ARTICLE.en.md`, `.kk.md`, `.ru.md`).
 - `site/`: the same texts as a web page in English, Kazakh and Russian (`site/build.py`, `site/strings.py`).
 - Review, Addendum 2: the forecast re-checked on 45 moments; raw output in `docs/data/baseline_45_moments.ru.txt`.
+
+## 23 November, 17:45 — five hours of data, a word from Bauyrzhan
+- Review, Addendum 3: the forecast re-checked on 74 moments. It is level with the trivial forecast again — ahead by
+  error, behind by hits. Nine of the 76 moments are the body's own hourly schedule. Raw outputs:
+  `docs/data/baseline_74_moments.ru.txt`, `docs/data/state_1737.txt`.
+- Article and page: the check table, the charts and the byline carry the 17:40 numbers.
+- Article and page: a new section, "A word from Bauyrzhan" — his statement of 15:16 and what the check says about it.

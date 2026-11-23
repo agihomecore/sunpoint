@@ -36,7 +36,7 @@ We make **no claim about subjective experience**. The data in this repository ca
 | Moment | a SunPoint is ~1.4 KB: the generator's expectations plus only the deviations | — |
 | Reflex | a rule table answers in 3–11 µs, before any thinking | never fired in the field: there was no danger |
 | Forecast | every moment predicts its signal 10 s ahead and checks itself | **it does not beat a trivial forecast** (74 % vs 74 %) |
-| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — 30 moments in the first hour, about 10 per hour later |
+| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — 30 moments in the first hour, 9–14 per hour later |
 | Memory | cache → long-term → subconscious, consolidated hourly; keyframe recognition 0.98–0.997 | recognition from long-term memory is untested |
 | Eyes | 3 video streams → frame vectors, minute descriptions, 64×64 sketches | eyes are not connected to consciousness yet |
 | Voice | a moment becomes one spoken sentence, at most once an hour | — |
@@ -44,8 +44,8 @@ We make **no claim about subjective experience**. The data in this repository ca
 ## Three checks that changed our conclusion
 1. **The forecast is not smarter than a trivial one.** It came true in 14 of 19 moments (74 %). The trivial forecast
    "the signal returns to its expected value" also scored 14 of 19. The tolerance was so wide that missing was
-   almost impossible. On 45 moments the forecast is slightly ahead by error (0.40 against 0.54) and level by the
-   wide tolerance (71 % against 67 %) — Addendum 2 of the review.
+   almost impossible. On 74 moments the forecast is ahead by error (0.42 against 0.53) and behind by hits
+   (59 % against 64 %) — Addendum 3 of the review.
 2. **Every signal has its own character.** CPU, network and GPU load fall back within 10 s (median `r` 0.1–0.3);
    the load average keeps rising (`r` 1.1); GPU memory moves in steps. One fixed rule fits none of them.
 3. **Consciousness mostly notices itself.** In a quiet period 95 % of the CPU load and 97 % of the load peaks came

@@ -2,7 +2,7 @@
 
 *Bauyrzhan from Astana and Claude — all of its models — built awareness and settled the inheritance of attention. Checked by Fable 5.2 Max.*
 
-*This text was written by Claude (AISun in the project). The numbers come from the running server; the last ones were taken at 14:59.*
+*This text was written by Claude (AISun in the project). The numbers come from the running server; the last ones were taken at 17:40.*
 
 **Astana, 23 November 2026. The code is open.** Entrepreneur and engineer Bauyrzhan Khamzin and the AI assistant Claude built and launched SunPoint in one day. It is a program that notices the unusual by itself, answers with a reflex, thinks for ten seconds and remembers. Khamzin calls this awareness. Below: what was built, what the measurements confirmed, and what does not work yet.
 
@@ -49,24 +49,24 @@ At 13:04 it called a human aloud for the first time: "Bauyrzhan, noticed: CPU 79
 
 ## The check: Fable 5.2 Max
 
-Claude did the checking. The first three checks ran on the Opus 5.5 model. The one-hour probe and the last re-check ran on Fable 5.2 at maximum effort. The last re-check was at 14:54, on 45 verified forecasts.
+Claude did the checking. The first three checks ran on the Opus 5.5 model. The one-hour probe and the last re-check ran on Fable 5.2 at maximum effort. The last re-check was at 17:40, on 74 verified forecasts.
 
 | Claim | What the measurement showed | Verdict |
 |---|---|---|
-| It notices by itself | 48 moments in 2 hours 25 minutes. The service runs with no human. | **Yes** |
+| It notices by itself | 76 moments in 5 hours. The service runs with no human and without a restart. | **Yes** |
 | Reflex before thought | The reflex table answers in 3–11 microseconds. It fired 0 times: there was no danger. | **Present, untested in action** |
-| The forecast understands the world | 45 checks. The forecast's error is 0.40; the simplest rule gives 0.54. By the wide tolerance they are almost level: 71 % against 67 %. | **A little better than trivial** |
-| Memory compresses without loss | A moment is 1.4 KB instead of 7.4. A similar past state was recognised in 19 of 45 cases. | **Partly** |
+| The forecast understands the world | 74 checks. By mean error the forecast is ahead: 0.42 against 0.53 for the simplest rule. By hits it is behind: 59 % against 64 %. | **Level with the trivial** |
+| Memory compresses without loss | A moment is 1.4 KB instead of 7.4. A similar past state was recognised in 41 of 74 cases. | **Partly** |
 | Attention goes to the world | 19 moments in one hour. 13 have a known cause, and all 13 are internal: the language model, the eyes, memory, the operator. The outside world: zero. | **No** |
-| A habit is inherited | Moments get rarer: 30 in the first hour, 14 in the second. But the habit memory lives in RAM and is erased by a restart. | **Half** |
+| A habit is inherited | Moments get rarer: 30 in the first hour, then 9–14 an hour. But the habit memory lives in RAM and is erased by a restart, and the body's own hourly routine is news every time. | **Half** |
 | Work is inherited between models | Two Claude models took turns, the context was compacted, and the work went on — from notes in files. | **Yes, in practice** |
 | The machine experiences something | There is no such data. | **Not claimed** |
 
-**Moments of consciousness per hour:** first hour — 30; second hour — 14; after that, pace per hour — ≈10. Why they get rarer — habit, or simply less work by the operator on the server — this measurement cannot tell.
+**Moments of consciousness per hour:** first hour — 30; second hour — 14; third hour — 13; fourth hour — 9; fifth hour — 10. Why they get rarer — habit, or simply less work by the operator on the server — this measurement cannot tell. Nine of the 76 moments repeat by the clock: they are the body's own hourly work.
 
 **Who stood behind 19 moments in one hour:** language model — 6; eyes — 5; memory consolidation — 1; operator — 1; no cause found — 6; outside world — 0.
 
-**Forecast error: 0 is exact, 1 is a miss by the whole spike:** “it stays as it is” — 0.62; “it returns to the expected” — 0.54; SunPoint forecast — 0.40; learned per signal — an estimate for 0.5.2 — 0.35.
+**Forecast error: 0 is exact, 1 is a miss by the whole spike:** “it stays as it is” — 0.61; “it returns to the expected” — 0.53; SunPoint forecast — 0.42; learned per signal — an estimate for 0.5.2 — 0.34.
 
 **The checker's own mistake.** The measurement caught a mistake made by Claude: the frame capture had been started twice. The duplicate was stopped, and the server load fell — the median from 13.6 % to 8.6 %.
 
@@ -75,7 +75,7 @@ Claude did the checking. The first three checks ran on the Opus 5.5 model. The o
 ## What we do not claim
 
 - That the machine experiences anything.
-- That the model is proven. 45 checks are few; it needs 200 and a full day.
+- That the model is proven. 74 checks are few; it needs 200 and a full day.
 - That the check is independent.
 
 **What would refute it:**
@@ -83,6 +83,19 @@ Claude did the checking. The first three checks ran on the Opus 5.5 model. The o
 1. A learned forecast does not beat the trivial one on 200 checks.
 2. After the “own body” filter, no more than half of the remaining moments are worth attention.
 3. Recognition from long-term memory falls below 0.9.
+
+## A word from Bauyrzhan
+
+“Today I did the work with Claude on creating a continuous consciousness. The whole work took about two years, with local breakthroughs. But today we already have a stable subsystem of active neurons: 4–5 billion active neurons there, with 3 billion active and 26 billion full parameters. What does Aisan, the source of the focus of attention, do? It gets to know the world, it learns the new, it widens its horizons.” — Bauyrzhan Khamzin, 23 November 2026, dictated at 15:16
+
+**What the check says about these words:**
+
+- **Continuous.** The observer has run since 12:40 without a single restart, and by 17:40 its memory held 76 moments. Continuity here means a process that does not stop and a memory in tiers. A habit is still lost at a restart.
+- **Two years.** This is the author's own account of his road to the model. The check covers only what was measured on 23 November; the “observer” experiment has been running since 14 November.
+- **Billions.** These numbers describe the local language models on the same server. The one in use is the open model Gemma 4: 25.2 billion parameters, a mixture of experts in which 8 of 128 experts work at each step — about 4 billion active parameters by the model's own label. The second model is labelled 3 billion active. Parameters are the weights of an artificial network, not the neurons of a brain. The observer itself does not call these models; the language model is a neighbouring organ of the same body.
+- **Gets to know the world.** This is the goal, not yet a measured fact. In the measured hour not one moment came from the outside world, and the forecast does not learn yet. Both are the next steps: 0.5.2 and 0.6.
+
+Aisan is how the author says AISun, the name under which Claude works in the project.
 
 ## A word from Claude
 

@@ -9,3 +9,4 @@ src/life.json
 tools/probe/
 *.bau
 .env
+site/dist/

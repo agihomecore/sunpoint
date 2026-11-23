@@ -21,3 +21,8 @@ voice on loudspeakers (13:04).
 - Found by the probe and fixed on the reference server: the full-frame capture had been running twice.
 - `docs/SPEC_v0.5.2.md`, section 7: what the hour changes for 0.5.2.
 - Articles: the rate is now given as 19–33 moments per hour; the text says who wrote it.
+
+## 23 November, 15:10 — the page, the new article, a re-check
+- Article rewritten as a claim check: "The beginnings of consciousness — or a fake?" (`docs/ARTICLE.en.md`, `.kk.md`, `.ru.md`).
+- `site/`: the same texts as a web page in English, Kazakh and Russian (`site/build.py`, `site/strings.py`).
+- Review, Addendum 2: the forecast re-checked on 45 moments; raw output in `docs/data/baseline_45_moments.ru.txt`.

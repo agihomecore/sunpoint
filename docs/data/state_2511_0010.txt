@@ -1,0 +1,69 @@
+# state, 2026-11-25 00:10:09 Astana
+services: observer=active core=active voice=active
+observer active since: Mon 2026-11-23 07:40:24 UTC
+observer restarts: 0
+stored moments (*.bau): 280; size on disk: 1,2M
+moments per day:
+  2026-11-23: 119
+  2026-11-24: 160
+  2026-11-25: 1
+log lines by kind:
+  SUNPOINT: 280
+  numeric (cpu/gpu/net/mem/load): 251
+  journal lines (expected None): 26
+  recalled a similar state: 220
+  reflex fired: 0
+  deferred recalled (ВСПОМНИЛ): 274
+moments per hour, last 30 hours (hour: count):
+  2026-11-23 19: 7
+  2026-11-23 20: 6
+  2026-11-23 21: 7
+  2026-11-23 22: 6
+  2026-11-23 23: 7
+  2026-11-24 00: 6
+  2026-11-24 01: 6
+  2026-11-24 02: 7
+  2026-11-24 03: 8
+  2026-11-24 04: 7
+  2026-11-24 05: 8
+  2026-11-24 06: 6
+  2026-11-24 07: 7
+  2026-11-24 08: 10
+  2026-11-24 09: 7
+  2026-11-24 10: 6
+  2026-11-24 11: 11
+  2026-11-24 12: 5
+  2026-11-24 13: 4
+  2026-11-24 14: 8
+  2026-11-24 15: 6
+  2026-11-24 16: 7
+  2026-11-24 17: 5
+  2026-11-24 18: 6
+  2026-11-24 19: 4
+  2026-11-24 20: 8
+  2026-11-24 21: 7
+  2026-11-24 22: 4
+  2026-11-24 23: 7
+  2026-11-25 00: 1
+numeric moments by signal:
+  gpu_util: 99
+  net_rx_kbs: 59
+  gpu_mem_mb: 26
+  net_tx_kbs: 22
+  load1: 17
+  cpu_pct: 15
+  mem_avail_mb: 13
+  procs: 3
+journal moments by source (first word), top 12:
+  tailscaled: 12
+  fwupdmgr: 4
+  PackageKit: 3
+  python3: 2
+  crontab: 2
+  fwupd: 1
+  apt.systemd.daily: 1
+  50-motd-news: 1
+voice (bridge.log): said 33, silent 207
+heartbeat:
+  t=2026-11-25 00:10:04, t_unix=1795547404.251379, clean=False, pid=2519588
+memory: 8 of 31 GB used; disk free: 131G; uptime: up 3 days, 16 hours, 2 minutes

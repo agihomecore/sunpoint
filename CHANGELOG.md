@@ -33,3 +33,21 @@ voice on loudspeakers (13:04).
   `docs/data/baseline_74_moments.ru.txt`, `docs/data/state_1737.txt`.
 - Article and page: the check table, the charts and the byline carry the 17:40 numbers.
 - Article and page: a new section, "A word from Bauyrzhan" — his statement of 15:16 and what the check says about it.
+
+## 25 November, 00:40 — two days of data, the voice repaired
+- Interim review: `docs/REVIEW_2026-11-25.md` (Russian: `.ru.md`). 254 checked forecasts — the bar of 200 is reached.
+  The running forecast is still level with a trivial one. The learned rule of 0.5.2, replayed on the stored moments,
+  beats the fixed trivial forecasts (error 0.47 against 0.72, skill +0.34) and leads a tougher one by 0.06.
+  About 7 moments per hour; at least 43 % of them repeat by the clock of the body's own schedule.
+- `tools/baseline_check.py`: replay of the 0.5.2 rule on past moments only, skill, a tougher trivial forecast
+  (Mean or Persistence per signal), medians, block bootstrap, rate per day and hour, clock slots; `BRIEF=1`.
+- Voice. Fault found on the reference server: the synthesiser's command-line tool returned 0.8 s of audio for any
+  text, so the loudspeakers had played fragments since 23 November. `src/tts.py` and `src/say.sh` now use the Python
+  interface of Piper (`VOICE_PYTHON`, `VOICE_SPEED`, `VOICE_VOLUME` replace `VOICE_PIPER`).
+- `src/voice_bridge.py`: sentences for the ear — plain names, units, rounded numbers, "usually" for the expectation;
+  a journal moment names only its source. New settings: `VOICE_GAP`, `VOICE_NAME_EVERY`, `VOICE_QUIET=none`.
+  Defaults are unchanged: at most one ordinary sentence an hour, silent from 21:00 to 10:00.
+- `docs/SPEC_v0.5.2.md`, section 8: what two days change — a tougher trivial forecast as the bar, the cause before
+  the coefficient for GPU load, scheduled work first.
+- Raw outputs: `docs/data/baseline_254_moments.txt`, `state_2511_0010.txt`, `proprio_2511_148s.md`.
+- Not done: 0.5.2 itself. It was planned for 24 November.

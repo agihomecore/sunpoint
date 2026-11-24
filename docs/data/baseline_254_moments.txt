@@ -1,0 +1,363 @@
+moments with a checked forecast: 254
+
+== all moments: n=254
+  v0.5 tolerance (wide):       model 109/254 = 43%   Persistence 97/254 = 38%   Mean 147/254 = 58%
+  strict tolerance (1/4 spike): model 52/254 = 20%   Persistence 83/254 = 33%   Mean 105/254 = 41%
+  mean error in units of surprise: model 0.66   Persistence 0.80   Mean 0.72
+  r (where it went): median 0.33, mean 0.71, min -0.27, max 59.02
+  below expected (r<-0.25): 1 | back at expected (-0.25..0.25): 105 | middle (0.25..0.75): 55 | stayed at the spike (0.75..1.25): 83 | kept growing (r>1.25): 10
+  spike strength z: median 5.8, min 3.0, max 7.1
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 76% on average
+
+== signal gpu_util: n=99
+  v0.5 tolerance (wide):       model 47/99 = 47%   Persistence 35/99 = 35%   Mean 47/99 = 47%
+  strict tolerance (1/4 spike): model 29/99 = 29%   Persistence 33/99 = 33%   Mean 35/99 = 35%
+  mean error in units of surprise: model 0.39   Persistence 0.56   Mean 0.49
+  r (where it went): median 0.34, mean 0.48, min -0.07, max 1.32
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 35 | middle (0.25..0.75): 29 | stayed at the spike (0.75..1.25): 33 | kept growing (r>1.25): 2
+  spike strength z: median 5.9, min 3.2, max 6.9
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 71% on average
+
+== signal net_rx_kbs: n=59
+  v0.5 tolerance (wide):       model 10/59 = 17%   Persistence 2/59 = 3%   Mean 56/59 = 95%
+  strict tolerance (1/4 spike): model 4/59 = 7%   Persistence 0/59 = 0%   Mean 52/59 = 88%
+  mean error in units of surprise: model 1.45   Persistence 1.92   Mean 1.07
+  r (where it went): median -0.00, mean 1.05, min -0.17, max 59.02
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 52 | middle (0.25..0.75): 6 | stayed at the spike (0.75..1.25): 0 | kept growing (r>1.25): 1
+  spike strength z: median 6.9, min 3.3, max 7.1
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 68% on average
+
+== signal gpu_mem_mb: n=26
+  v0.5 tolerance (wide):       model 0/26 = 0%   Persistence 25/26 = 96%   Mean 1/26 = 4%
+  strict tolerance (1/4 spike): model 0/26 = 0%   Persistence 25/26 = 96%   Mean 1/26 = 4%
+  mean error in units of surprise: model 0.49   Persistence 0.04   Mean 0.96
+  r (where it went): median 1.00, mean 0.96, min 0.00, max 1.00
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 1 | middle (0.25..0.75): 0 | stayed at the spike (0.75..1.25): 25 | kept growing (r>1.25): 0
+  spike strength z: median 7.0, min 4.3, max 7.1
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 61% on average
+
+== signal net_tx_kbs: n=22
+  v0.5 tolerance (wide):       model 16/22 = 73%   Persistence 3/22 = 14%   Mean 21/22 = 95%
+  strict tolerance (1/4 spike): model 8/22 = 36%   Persistence 0/22 = 0%   Mean 13/22 = 59%
+  mean error in units of surprise: model 0.32   Persistence 0.80   Mean 0.24
+  r (where it went): median 0.16, mean 0.20, min -0.27, max 0.60
+  below expected (r<-0.25): 1 | back at expected (-0.25..0.25): 13 | middle (0.25..0.75): 8 | stayed at the spike (0.75..1.25): 0 | kept growing (r>1.25): 0
+  spike strength z: median 4.0, min 3.0, max 7.1
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 91% on average
+
+== signal load1: n=17
+  v0.5 tolerance (wide):       model 6/17 = 35%   Persistence 12/17 = 71%   Mean 0/17 = 0%
+  strict tolerance (1/4 spike): model 0/17 = 0%   Persistence 11/17 = 65%   Mean 0/17 = 0%
+  mean error in units of surprise: model 0.73   Persistence 0.35   Mean 1.24
+  r (where it went): median 1.15, mean 1.24, min 0.78, max 2.04
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 0 | middle (0.25..0.75): 0 | stayed at the spike (0.75..1.25): 11 | kept growing (r>1.25): 6
+  spike strength z: median 4.1, min 3.3, max 5.4
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 93% on average
+
+== signal cpu_pct: n=15
+  v0.5 tolerance (wide):       model 14/15 = 93%   Persistence 4/15 = 27%   Mean 12/15 = 80%
+  strict tolerance (1/4 spike): model 9/15 = 60%   Persistence 1/15 = 7%   Mean 3/15 = 20%
+  mean error in units of surprise: model 0.28   Persistence 0.62   Mean 0.43
+  r (where it went): median 0.32, mean 0.43, min -0.01, max 1.32
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 3 | middle (0.25..0.75): 10 | stayed at the spike (0.75..1.25): 1 | kept growing (r>1.25): 1
+  spike strength z: median 3.6, min 3.1, max 4.4
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 99% on average
+
+== signal mem_avail_mb: n=13
+  v0.5 tolerance (wide):       model 13/13 = 100%   Persistence 13/13 = 100%   Mean 7/13 = 54%
+  strict tolerance (1/4 spike): model 0/13 = 0%   Persistence 13/13 = 100%   Mean 0/13 = 0%
+  mean error in units of surprise: model 0.48   Persistence 0.02   Mean 0.99
+  r (where it went): median 0.99, mean 0.99, min 0.93, max 1.02
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 0 | middle (0.25..0.75): 0 | stayed at the spike (0.75..1.25): 13 | kept growing (r>1.25): 0
+  spike strength z: median 4.8, min 3.3, max 5.9
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 100% on average
+
+== signal procs: n=3
+  v0.5 tolerance (wide):       model 3/3 = 100%   Persistence 3/3 = 100%   Mean 3/3 = 100%
+  strict tolerance (1/4 spike): model 2/3 = 67%   Persistence 0/3 = 0%   Mean 1/3 = 33%
+  mean error in units of surprise: model 0.19   Persistence 0.68   Mean 0.32
+  r (where it went): median 0.31, mean 0.32, min 0.14, max 0.50
+  below expected (r<-0.25): 0 | back at expected (-0.25..0.25): 1 | middle (0.25..0.75): 2 | stayed at the spike (0.75..1.25): 0 | kept growing (r>1.25): 0
+  spike strength z: median 5.2, min 4.1, max 6.1
+  share of the "expected…spike" segment covered by the v0.5 tolerance: 100% on average
+
+== learned return coefficient (leave-one-out): per signal 0.45, one for all 0.63, fixed 0.5 0.66, Mean 0.72, Persistence 0.80
+
+== 0.5.2 rule replayed (past moments only): n=254
+  mean error: stored forecast 0.66   learned per signal 0.47   Mean 0.72   Persistence 0.80
+  strict hits of the learned forecast: 170/254 = 67%
+  skill = 1 - error / best trivial error: stored forecast +0.09   learned per signal +0.34   (best trivial: Mean)
+  best trivial error minus stored forecast error: +0.06; bootstrap 95% +0.01..+0.12; in blocks of 10 moments +0.03..+0.10
+  best trivial error minus learned per signal error: +0.25; bootstrap 95% +0.20..+0.30; in blocks of 10 moments +0.21..+0.29
+  first half / second half, learned error: 0.31 / 0.64;  best trivial: 0.50 / 0.94
+  medians: stored forecast 0.49   learned per signal 0.12   Mean 0.33   Persistence 0.68
+  tougher trivial forecast (per signal: Mean or Persistence, whichever was better so far): error 0.53; learned is closer in 137, farther in 94; difference +0.06, bootstrap 95% +0.03..+0.08; in blocks of 10 moments +0.04..+0.08
+    gpu_util      n=99   learned 0.36   tougher trivial 0.49   Mean 0.49   Persistence 0.56
+    net_rx_kbs    n=59   learned 1.08   tougher trivial 1.07   Mean 1.07   Persistence 1.92
+    gpu_mem_mb    n=26   learned 0.12   tougher trivial 0.08   Mean 0.96   Persistence 0.04
+    net_tx_kbs    n=22   learned 0.19   tougher trivial 0.24   Mean 0.24   Persistence 0.80
+    load1         n=17   learned 0.45   tougher trivial 0.41   Mean 1.24   Persistence 0.35
+    cpu_pct       n=15   learned 0.26   tougher trivial 0.46   Mean 0.43   Persistence 0.62
+    mem_avail_mb  n=13   learned 0.15   tougher trivial 0.08   Mean 0.99   Persistence 0.02
+  without 1 moment(s) with |r| > 5 (2026-11-24 09:30:02 net_rx_kbs): stored 0.43   learned 0.24   tougher trivial 0.30   Mean 0.49   Persistence 0.58   skill of learned vs best fixed trivial +0.51, vs tougher trivial +0.19
+
+== rate of checked numeric moments: per day 2026-11-23: 116, 2026-11-24: 137, 2026-11-25: 1; per active hour: median 6, max 22, hours with moments 37
+  same signal at the same minute of the hour (>= 4 different hours): net_rx_kbs at :07 x32; gpu_util at :17 x20; gpu_mem_mb at :22 x17; gpu_util at :00 x13; gpu_util at :30 x11; net_rx_kbs at :17 x8; mem_avail_mb at :22 x8; net_rx_kbs at :55 x4
+
+== by moment (time, signal, spike, expected, forecast, actual, r, z, true by v0.5)
+  12:33:58 cpu_pct     v=41.9     e=10.05    pred=26.29    real=27.2     r=+0.54 z=3.1 yes
+  12:34:11 gpu_util    v=81       e=5.38     pred=43.95    real=20       r=+0.19 z=6.5 no
+  12:38:52 cpu_pct     v=38.8     e=7.08     pred=23.26    real=15.1     r=+0.25 z=4.0 yes
+  12:47:58 cpu_pct     v=45.5     e=12.33    pred=29.25    real=15.4     r=+0.09 z=3.1 yes
+  12:48:11 load1       v=1.97     e=0.47     pred=1.24     real=2.57     r=+1.40 z=5.0 no
+  12:48:45 net_rx_kbs  v=9236.1   e=1227.11  pred=5311.69  real=1653.8   r=+0.05 z=4.2 yes
+  12:53:11 gpu_util    v=42       e=0.43     pred=21.63    real=0        r=-0.01 z=6.9 no
+  12:53:45 cpu_pct     v=47       e=12.58    pred=30.13    real=23.7     r=+0.32 z=3.1 yes recalled
+  12:54:55 load1       v=1.8      e=0.65     pred=1.24     real=1.6      r=+0.83 z=3.5 yes
+  12:55:16 net_rx_kbs  v=5874.6   e=1200.66  pred=3584.37  real=2132.3   r=+0.20 z=3.3 yes
+  12:57:48 cpu_pct     v=47.1     e=11.63    pred=29.72    real=11.2     r=-0.01 z=3.4 yes recalled
+  12:58:40 load1       v=1.34     e=0.34     pred=0.85     real=1.13     r=+0.79 z=3.3 yes
+  12:59:25 net_rx_kbs  v=6137     e=1191.81  pred=3713.86  real=2164.8   r=+0.20 z=3.3 yes recalled
+  13:00:26 cpu_pct     v=54.3     e=12.15    pred=33.65    real=23.2     r=+0.26 z=3.7 yes recalled
+  13:01:21 net_tx_kbs  v=179.2    e=39.05    pred=110.52   real=0.7      r=-0.27 z=3.0 no
+  13:03:34 net_tx_kbs  v=192.5    e=38.28    pred=116.93   real=130.2    r=+0.60 z=3.2 yes recalled
+  13:04:35 cpu_pct     v=79.2     e=13.22    pred=46.87    real=56.4     r=+0.65 z=4.4 yes recalled
+  13:04:55 load1       v=4.49     e=1.11     pred=2.83     real=8        r=+2.04 z=3.9 no
+  13:06:06 net_rx_kbs  v=6592.4   e=1194.53  pred=3947.44  real=3075.3   r=+0.35 z=3.7 yes
+  13:16:30 load1       v=2.63     e=0.8      pred=1.73     real=2.22     r=+0.78 z=4.0 yes
+  13:17:12 gpu_util    v=83       e=1.37     pred=43       real=11       r=+0.12 z=5.9 no
+  13:19:38 net_rx_kbs  v=3699.4   e=1220.36  pred=2484.67  real=2296.6   r=+0.43 z=3.4 yes
+  13:21:30 cpu_pct     v=54.6     e=14.34    pred=34.87    real=30.4     r=+0.40 z=3.5 yes
+  13:21:42 gpu_util    v=45       e=2.82     pred=24.33    real=0        r=-0.07 z=3.3 yes
+  13:22:42 gpu_mem_mb  v=489      e=11086.6  pred=5681.84  real=489      r=+1.00 z=7.1 no
+  13:26:04 cpu_pct     v=54.7     e=14.94    pred=35.22    real=27.1     r=+0.31 z=3.4 yes
+  13:26:40 net_tx_kbs  v=185.4    e=38.37    pred=113.36   real=62.5     r=+0.16 z=3.5 yes recalled
+  13:28:05 load1       v=2.95     e=1.19     pred=2.09     real=3.01     r=+1.03 z=3.5 yes
+  13:30:14 gpu_util    v=84       e=1.45     pred=43.55    real=82       r=+0.98 z=5.9 no recalled
+  13:30:24 cpu_pct     v=81.1     e=22.96    pred=52.61    real=38.3     r=+0.26 z=3.5 yes
+  13:33:51 net_tx_kbs  v=198.9    e=38.02    pred=120.07   real=125.6    r=+0.54 z=3.2 yes
+  13:35:17 gpu_util    v=64       e=4.04     pred=34.62    real=83       r=+1.32 z=3.4 no
+  13:35:28 cpu_pct     v=91.5     e=21.01    pred=56.96    real=93.1     r=+1.02 z=3.6 yes recalled
+  13:44:07 load1       v=2.29     e=0.87     pred=1.59     real=3.14     r=+1.60 z=3.5 no recalled
+  13:44:37 net_tx_kbs  v=195.1    e=37.43    pred=117.84   real=105.5    r=+0.43 z=3.4 yes recalled
+  14:00:55 net_tx_kbs  v=259.4    e=37.35    pred=150.6    real=106.9    r=+0.31 z=4.3 yes recalled
+  14:04:22 gpu_util    v=20       e=1.21     pred=10.79    real=0        r=-0.06 z=3.4 yes recalled
+  14:07:02 net_rx_kbs  v=36720.8  e=1301.68  pred=19365.4  real=1335.2   r=+0.00 z=7.0 no
+  14:12:28 cpu_pct     v=66.4     e=15.52    pred=41.47    real=37.8     r=+0.44 z=4.2 yes recalled
+  14:17:08 gpu_util    v=77       e=1.59     pred=40.05    real=22       r=+0.27 z=5.8 yes recalled
+  14:22:41 gpu_mem_mb  v=489      e=11075.3  pred=5676.29  real=489      r=+1.00 z=7.0 no recalled
+  14:32:52 net_tx_kbs  v=203.1    e=36.6     pred=121.51   real=63.8     r=+0.16 z=3.7 yes recalled
+  14:36:41 gpu_util    v=82       e=1.04     pred=42.33    real=28       r=+0.33 z=6.6 yes recalled
+  14:45:02 load1       v=3.79     e=0.9      pred=2.37     real=6.29     r=+1.87 z=4.5 no
+  14:45:42 net_tx_kbs  v=253.1    e=36.18    pred=146.81   real=128.5    r=+0.43 z=3.7 yes recalled
+  14:57:19 cpu_pct     v=57.8     e=12.12    pred=35.42    real=30.5     r=+0.40 z=4.0 yes recalled
+  15:00:09 gpu_util    v=80       e=0.68     pred=41.13    real=26       r=+0.32 z=6.8 yes recalled
+  15:00:25 net_rx_kbs  v=4003.1   e=752      pred=2410.06  real=1585.5   r=+0.26 z=3.9 yes
+  15:00:40 mem_avail_mb v=24307    e=26347.5  pred=25306.8  real=24456    r=+0.93 z=3.8 yes
+  15:07:02 net_rx_kbs  v=65842.9  e=807.26   pred=33975.4  real=0.1      r=-0.01 z=7.1 no recalled
+  15:07:21 gpu_util    v=86       e=2.38     pred=45.02    real=1        r=-0.02 z=5.3 no recalled
+  15:17:11 gpu_util    v=83       e=2.42     pred=43.52    real=4        r=+0.02 z=5.5 no recalled
+  15:19:17 net_rx_kbs  v=3796.6   e=744.16   pred=2300.9   real=1523.6   r=+0.26 z=3.5 yes recalled
+  15:22:42 gpu_mem_mb  v=489      e=11053.2  pred=5665.47  real=489      r=+1.00 z=6.6 no recalled
+  15:30:09 gpu_util    v=78       e=1.93     pred=40.73    real=84       r=+1.08 z=5.8 no
+  15:36:17 load1       v=2.67     e=1        pred=1.85     real=3.86     r=+1.71 z=3.9 no recalled
+  15:37:32 gpu_util    v=66       e=3.05     pred=35.15    real=0        r=-0.05 z=4.2 no recalled
+  15:38:14 cpu_pct     v=78       e=14.95    pred=47.1     real=98.2     r=+1.32 z=3.8 no
+  16:07:02 net_rx_kbs  v=41375.7  e=792.48   pred=21489.9  real=0        r=-0.02 z=7.1 no recalled
+  16:08:51 gpu_util    v=80       e=1.48     pred=41.52    real=35       r=+0.43 z=6.4 yes recalled
+  16:14:21 gpu_util    v=84       e=2.77     pred=44.2     real=16       r=+0.16 z=5.3 yes recalled
+  16:17:11 gpu_util    v=73       e=3.72     pred=39.05    real=30       r=+0.38 z=4.3 yes recalled
+  16:22:31 gpu_mem_mb  v=489      e=11075.1  pred=5676.18  real=489      r=+1.00 z=7.0 no
+  16:30:21 gpu_util    v=84       e=4.48     pred=45.04    real=81       r=+0.96 z=4.1 yes recalled
+  16:39:52 gpu_util    v=83       e=3.87     pred=44.23    real=16       r=+0.15 z=4.3 yes
+  16:54:10 cpu_pct     v=67.7     e=11.85    pred=40.34    real=19.1     r=+0.13 z=4.1 yes recalled
+  16:59:09 net_rx_kbs  v=3228.1   e=619.5    pred=1949.88  real=445.1    r=-0.07 z=3.5 no
+  17:07:02 net_rx_kbs  v=62620.9  e=795.36   pred=32326.4  real=388.1    r=-0.01 z=7.1 no recalled
+  17:08:48 load1       v=2.49     e=0.82     pred=1.67     real=2.18     r=+0.81 z=3.9 yes recalled
+  17:10:22 gpu_util    v=78       e=0.52     pred=40.04    real=82       r=+1.05 z=6.8 no recalled
+  17:14:15 net_tx_kbs  v=251.9    e=34.74    pred=145.49   real=39.1     r=+0.02 z=4.5 no recalled
+  17:17:03 net_rx_kbs  v=7937.6   e=683.38   pred=4383.03  real=1527.2   r=+0.12 z=6.4 no recalled
+  17:22:38 gpu_mem_mb  v=489      e=11074.8  pred=5676.06  real=489      r=+1.00 z=7.0 no recalled
+  17:30:11 gpu_util    v=83       e=1.86     pred=43.24    real=78       r=+0.94 z=5.8 no recalled
+  17:41:01 gpu_util    v=82       e=1.93     pred=42.76    real=14       r=+0.15 z=5.4 yes recalled
+  18:00:02 procs       v=256      e=235.71   pred=246.06   real=242      r=+0.31 z=4.1 yes
+  18:00:12 gpu_util    v=82       e=1.3      pred=42.46    real=21       r=+0.24 z=6.3 yes recalled
+  18:00:52 mem_avail_mb v=23010    e=25233.6  pred=24099.6  real=23111    r=+0.95 z=4.3 yes
+  18:07:02 net_rx_kbs  v=11526.5  e=693.4    pred=6218.28  real=480.9    r=-0.02 z=6.6 no recalled
+  18:11:32 gpu_util    v=64       e=1.57     pred=33.41    real=83       r=+1.30 z=5.5 no recalled
+  18:17:22 gpu_util    v=81       e=2.98     pred=42.77    real=81       r=+1.00 z=4.9 no recalled
+  18:22:50 net_tx_kbs  v=192.7    e=35.47    pred=115.66   real=61       r=+0.16 z=4.0 yes recalled
+  18:35:45 net_rx_kbs  v=3215.8   e=729.87   pred=1997.7   real=565.3    r=-0.07 z=4.0 no recalled
+  18:42:31 gpu_util    v=64       e=0.91     pred=33.09    real=65       r=+1.02 z=6.2 no recalled
+  19:00:02 gpu_util    v=75       e=1.1      pred=38.79    real=78       r=+1.04 z=6.3 no recalled
+  19:00:42 mem_avail_mb v=24207    e=26344.8  pred=25254.5  real=24218    r=+0.99 z=3.3 yes
+  19:07:01 net_rx_kbs  v=22984.3  e=741.78   pred=12085.5  real=1713.1   r=+0.04 z=6.9 no recalled
+  19:13:11 gpu_util    v=84       e=1.9      pred=43.77    real=80       r=+0.95 z=5.6 no recalled
+  19:22:42 gpu_mem_mb  v=489      e=11011.5  pred=5645.01  real=489      r=+1.00 z=6.1 no
+  19:30:37 gpu_util    v=81       e=4.65     pred=43.59    real=0        r=-0.06 z=4.0 no recalled
+  19:43:54 gpu_util    v=83       e=2.67     pred=43.64    real=12       r=+0.12 z=5.3 no recalled
+  20:00:02 gpu_util    v=73       e=1.19     pred=37.81    real=79       r=+1.08 z=6.0 no recalled
+  20:07:01 net_rx_kbs  v=4372.2   e=731.43   pred=2588.22  real=2661.3   r=+0.53 z=4.1 yes recalled
+  20:14:29 gpu_util    v=83       e=1.75     pred=43.19    real=5        r=+0.04 z=6.0 no recalled
+  20:25:32 gpu_mem_mb  v=489      e=11083.8  pred=5680.47  real=489      r=+1.00 z=7.0 no recalled
+  20:30:32 gpu_util    v=82       e=5.75     pred=44.64    real=78       r=+0.95 z=3.5 yes recalled
+  20:55:01 net_rx_kbs  v=5272.9   e=744.35   pred=3053.91  real=575.5    r=-0.04 z=5.2 no recalled
+  21:00:11 gpu_util    v=76       e=2.21     pred=39.84    real=4        r=+0.02 z=5.5 no recalled
+  21:07:02 net_rx_kbs  v=42441.6  e=739.17   pred=22007.4  real=582.5    r=-0.00 z=7.1 no recalled
+  21:16:02 gpu_util    v=83       e=1.31     pred=42.97    real=4        r=+0.03 z=6.4 no recalled
+  21:17:02 net_rx_kbs  v=16758.4  e=737.63   pred=8908.22  real=1108.4   r=+0.02 z=6.9 no recalled
+  21:27:06 gpu_mem_mb  v=489      e=11087.8  pred=5682.39  real=489      r=+1.00 z=7.1 no recalled
+  21:40:31 gpu_util    v=100      e=3.32     pred=52.63    real=0        r=-0.03 z=5.2 no recalled
+  22:07:02 net_rx_kbs  v=30648.6  e=733.48   pred=15990.2  real=313.3    r=-0.01 z=7.0 no recalled
+  22:17:12 gpu_util    v=80       e=1.54     pred=41.56    real=5        r=+0.04 z=6.3 no recalled
+  22:23:52 gpu_mem_mb  v=489      e=11083.3  pred=5680.2   real=489      r=+1.00 z=7.1 no recalled
+  22:25:53 net_tx_kbs  v=200.4    e=34.83    pred=119.27   real=63.2     r=+0.17 z=3.9 yes recalled
+  22:30:15 gpu_util    v=87       e=2.24     pred=45.47    real=27       r=+0.29 z=5.6 yes recalled
+  22:48:52 gpu_util    v=95       e=1.25     pred=49.06    real=14       r=+0.14 z=6.5 no recalled
+  23:07:02 net_rx_kbs  v=51106.8  e=744.69   pred=26429.4  real=337.2    r=-0.01 z=7.1 no recalled
+  23:17:05 gpu_util    v=83       e=0.87     pred=42.76    real=83       r=+1.00 z=6.8 no recalled
+  23:17:57 net_tx_kbs  v=242.3    e=35.45    pred=140.95   real=67.8     r=+0.16 z=4.7 yes recalled
+  23:19:37 gpu_util    v=80       e=5.37     pred=43.43    real=33       r=+0.37 z=3.5 yes recalled
+  23:25:01 gpu_mem_mb  v=489      e=11082.5  pred=5679.82  real=489      r=+1.00 z=7.0 no recalled
+  23:30:22 gpu_util    v=69       e=4.73     pred=37.51    real=0        r=-0.07 z=3.2 yes recalled
+  23:50:00 gpu_util    v=83       e=1.32     pred=42.98    real=94       r=+1.13 z=6.1 no recalled
+  00:00:52 mem_avail_mb v=22910    e=25205.8  pred=24034.9  real=22957    r=+0.98 z=4.5 yes
+  00:07:02 net_rx_kbs  v=7665.1   e=746.54   pred=4275     real=536.4    r=-0.03 z=6.2 no recalled
+  00:17:06 gpu_util    v=83       e=1.57     pred=43.1     real=27       r=+0.31 z=5.8 yes recalled
+  00:42:22 gpu_util    v=21       e=1.14     pred=11.27    real=0        r=-0.06 z=3.2 yes recalled
+  00:52:07 gpu_util    v=82       e=0.6      pred=42.11    real=28       r=+0.34 z=6.8 yes recalled
+  01:07:02 net_rx_kbs  v=60806.3  e=781.41   pred=31394.1  real=2143.6   r=+0.02 z=7.1 no recalled
+  01:17:03 net_rx_kbs  v=13172.1  e=744.88   pred=7082.76  real=567.6    r=-0.01 z=6.8 no recalled
+  01:22:42 gpu_util    v=76       e=1.75     pred=39.62    real=18       r=+0.22 z=5.8 yes recalled
+  01:28:12 gpu_mem_mb  v=489      e=11093.5  pred=5685.2   real=489      r=+1.00 z=7.1 no recalled
+  01:30:22 gpu_util    v=65       e=3.92     pred=35.07    real=69       r=+1.07 z=3.6 yes recalled
+  01:53:11 gpu_util    v=81       e=1.26     pred=41.93    real=81       r=+1.00 z=6.4 no recalled
+  02:07:02 net_rx_kbs  v=28040.9  e=787.7    pred=14686.8  real=562.2    r=-0.01 z=7.0 no recalled
+  02:14:02 gpu_util    v=76       e=1.08     pred=39.29    real=0        r=-0.01 z=6.3 no recalled
+  02:17:12 gpu_util    v=74       e=1.93     pred=38.69    real=14       r=+0.17 z=5.1 yes recalled
+  02:22:43 gpu_mem_mb  v=489      e=11082.6  pred=5679.85  real=489      r=+1.00 z=7.1 no recalled
+  02:22:53 mem_avail_mb v=27288    e=24774.7  pred=26056.5  real=27282    r=+1.00 z=3.8 yes recalled
+  02:52:43 net_tx_kbs  v=212.1    e=34.27    pred=124.96   real=103.8    r=+0.39 z=4.1 yes recalled
+  02:54:43 gpu_util    v=63       e=1.3      pred=32.76    real=29       r=+0.45 z=6.6 yes recalled
+  03:00:06 gpu_util    v=80       e=3.19     pred=42.36    real=72       r=+0.90 z=5.1 yes recalled
+  03:07:02 net_rx_kbs  v=42884.7  e=753.95   pred=22240.6  real=0        r=-0.02 z=7.1 no recalled
+  03:17:12 gpu_util    v=93       e=2.08     pred=48.45    real=11       r=+0.10 z=5.8 no recalled
+  03:19:19 net_rx_kbs  v=4059.4   e=703.01   pred=2414.77  real=562.8    r=-0.04 z=4.0 no recalled
+  03:22:43 gpu_mem_mb  v=489      e=11087.3  pred=5682.17  real=489      r=+1.00 z=7.1 no recalled
+  03:35:06 net_tx_kbs  v=201.2    e=33.6     pred=119.08   real=62.3     r=+0.17 z=4.2 yes recalled
+  03:52:06 load1       v=3.55     e=1.13     pred=2.36     real=4.86     r=+1.54 z=4.3 no recalled
+  03:58:35 gpu_util    v=82       e=1.34     pred=42.48    real=12       r=+0.13 z=6.4 no recalled
+  04:07:02 net_rx_kbs  v=66389.3  e=727.85   pred=34215.2  real=0        r=-0.01 z=7.1 no recalled
+  04:17:05 gpu_util    v=73       e=0.69     pred=37.57    real=83       r=+1.14 z=6.5 no recalled
+  04:22:41 mem_avail_mb v=27255    e=23325.1  pred=25329.3  real=27244    r=+1.00 z=5.6 yes recalled
+  04:29:32 gpu_util    v=66       e=1.84     pred=34.56    real=80       r=+1.22 z=5.2 no recalled
+  05:00:18 gpu_util    v=77       e=0.89     pred=39.71    real=29       r=+0.37 z=6.4 yes recalled
+  05:07:02 net_rx_kbs  v=41383.8  e=701.67   pred=21449.5  real=1419.7   r=+0.02 z=7.1 no recalled
+  05:17:02 net_rx_kbs  v=11587.1  e=732.08   pred=6268.14  real=1364.3   r=+0.06 z=6.5 no recalled
+  05:17:13 gpu_util    v=79       e=1.56     pred=41.05    real=28       r=+0.34 z=6.3 yes recalled
+  05:22:39 mem_avail_mb v=27314    e=22844.8  pred=25124.1  real=27306    r=+1.00 z=5.9 yes recalled
+  05:30:12 gpu_util    v=81       e=1.38     pred=41.99    real=77       r=+0.95 z=6.2 no recalled
+  05:30:22 load1       v=3.7      e=1.08     pred=2.42     real=4.1      r=+1.15 z=4.5 no
+  05:52:32 gpu_util    v=66       e=1.55     pred=34.42    real=0        r=-0.02 z=5.8 no recalled
+  06:00:03 gpu_util    v=69       e=1.51     pred=35.93    real=76       r=+1.10 z=5.7 no recalled
+  06:07:01 net_tx_kbs  v=731.4    e=36.67    pred=390.98   real=1.9      r=-0.05 z=6.6 no recalled
+  06:22:35 gpu_mem_mb  v=515      e=11074.8  pred=5689.29  real=489      r=+1.00 z=7.0 no recalled
+  06:55:12 net_rx_kbs  v=9132.8   e=577.03   pred=4940.47  real=1140.3   r=+0.07 z=6.8 no recalled
+  07:03:05 gpu_util    v=81       e=0.59     pred=41.6     real=82       r=+1.01 z=6.8 no recalled
+  07:07:02 net_tx_kbs  v=1658     e=38.52    pred=864.45   real=3        r=-0.02 z=7.0 no recalled
+  07:17:12 gpu_util    v=82       e=1.37     pred=42.49    real=31       r=+0.37 z=6.0 yes recalled
+  07:22:45 gpu_mem_mb  v=489      e=11070.1  pred=5673.73  real=489      r=+1.00 z=6.9 no recalled
+  07:30:11 gpu_util    v=84       e=0.86     pred=43.26    real=28       r=+0.33 z=6.2 yes recalled
+  07:48:42 net_rx_kbs  v=3157.9   e=518.15   pred=1864.42  real=1900.6   r=+0.52 z=4.4 yes recalled
+  08:04:22 gpu_util    v=80       e=0.66     pred=41.13    real=82       r=+1.03 z=6.7 no recalled
+  08:07:02 net_rx_kbs  v=63900.2  e=733.01   pred=32948.3  real=1211.9   r=+0.01 z=7.1 no recalled
+  08:17:13 gpu_util    v=90       e=1.38     pred=46.58    real=5        r=+0.04 z=6.1 no recalled
+  08:22:44 gpu_mem_mb  v=489      e=11075.7  pred=5676.47  real=489      r=+1.00 z=7.0 no recalled
+  08:28:27 procs       v=257      e=226.73   pred=242.17   real=231      r=+0.14 z=6.1 yes
+  08:35:21 gpu_util    v=82       e=1.26     pred=42.44    real=64       r=+0.78 z=6.2 yes recalled
+  08:41:32 gpu_mem_mb  v=489      e=10713.5  pred=5499.02  real=489      r=+1.00 z=4.3 no recalled
+  08:45:03 net_rx_kbs  v=32296.3  e=577.44   pred=16754.1  real=0        r=-0.02 z=7.1 no recalled
+  08:52:05 net_tx_kbs  v=236.7    e=34.77    pred=137.75   real=92.4     r=+0.29 z=4.0 yes recalled
+  09:00:09 gpu_util    v=71       e=0.95     pred=36.67    real=29       r=+0.40 z=6.4 yes recalled
+  09:06:21 gpu_util    v=74       e=3.01     pred=39.22    real=82       r=+1.11 z=5.2 no recalled
+  09:07:02 net_rx_kbs  v=46736    e=499.5    pred=24080.1  real=360.4    r=-0.00 z=7.1 no recalled
+  09:17:03 net_rx_kbs  v=9105.1   e=506.86   pred=4891.96  real=633.2    r=+0.01 z=6.7 no recalled
+  09:22:33 gpu_mem_mb  v=489      e=10843.1  pred=5562.52  real=489      r=+1.00 z=4.8 no recalled
+  09:30:02 net_rx_kbs  v=5430.1   e=570.74   pred=3049.01  real=287383   r=+59.02 z=5.8 no recalled
+  09:30:12 net_tx_kbs  v=990.1    e=64.05    pred=536.34   real=1.6      r=-0.07 z=4.6 no recalled
+  10:00:11 gpu_util    v=50       e=0.9      pred=25.94    real=4        r=+0.06 z=5.3 no recalled
+  10:07:02 net_rx_kbs  v=65205.8  e=497.94   pred=33498.9  real=828.7    r=+0.01 z=7.1 no recalled
+  10:08:03 gpu_util    v=82       e=1.95     pred=42.77    real=2        r=+0.00 z=5.2 no recalled
+  10:17:26 load1       v=3.03     e=0.98     pred=2.02     real=3.45     r=+1.20 z=4.8 no recalled
+  10:22:41 mem_avail_mb v=27371    e=22336.3  pred=24904    real=27336    r=+0.99 z=4.7 yes recalled
+  10:38:33 gpu_util    v=83       e=1.75     pred=43.19    real=26       r=+0.30 z=5.6 yes recalled
+  11:07:01 net_rx_kbs  v=19917.3  e=541.23   pred=10423    real=0        r=-0.03 z=6.9 no recalled
+  11:09:13 gpu_util    v=81       e=0.6      pred=41.61    real=35       r=+0.43 z=6.9 yes recalled
+  11:15:30 procs       v=253      e=227.2    pred=240.36   real=240      r=+0.50 z=5.2 yes
+  11:17:10 gpu_util    v=82       e=1.66     pred=42.64    real=28       r=+0.33 z=5.7 yes recalled
+  11:22:44 gpu_mem_mb  v=489      e=11075.1  pred=5676.17  real=489      r=+1.00 z=7.0 no recalled
+  11:39:45 gpu_util    v=82       e=1.8      pred=42.7     real=34       r=+0.40 z=5.2 yes recalled
+  12:00:10 gpu_util    v=74       e=1.16     pred=38.31    real=15       r=+0.19 z=6.2 yes recalled
+  12:07:01 net_rx_kbs  v=22489.3  e=353.54   pred=11642.8  real=1.2      r=-0.02 z=7.1 no recalled
+  12:10:18 gpu_util    v=82       e=1.25     pred=42.43    real=80       r=+0.98 z=6.1 no recalled
+  12:22:35 mem_avail_mb v=27613    e=23281.7  pred=25490.7  real=27515    r=+0.98 z=4.8 yes recalled
+  12:41:17 gpu_util    v=83       e=0.97     pred=42.8     real=23       r=+0.27 z=6.5 yes recalled
+  13:07:02 net_rx_kbs  v=54508.6  e=322.71   pred=27957.5  real=219.4    r=-0.00 z=7.1 no recalled
+  13:12:12 gpu_util    v=83       e=0.68     pred=42.66    real=34       r=+0.40 z=6.8 yes recalled
+  13:17:02 net_rx_kbs  v=7579.5   e=259.59   pred=3992.74  real=100.4    r=-0.02 z=6.9 no recalled
+  13:22:41 gpu_mem_mb  v=489      e=11082.5  pred=5679.82  real=489      r=+1.00 z=7.1 no recalled
+  14:07:02 net_tx_kbs  v=2000.2   e=35.12    pred=1037.31  real=51.8     r=+0.01 z=7.1 no recalled
+  14:13:22 gpu_util    v=83       e=0.61     pred=42.63    real=81       r=+0.98 z=6.9 no recalled
+  14:22:38 gpu_mem_mb  v=489      e=11074.8  pred=5676.06  real=489      r=+1.00 z=7.0 no recalled
+  14:32:30 net_rx_kbs  v=598.2    e=77.19    pred=342.91   real=129.1    r=+0.10 z=4.4 yes recalled
+  14:45:02 net_rx_kbs  v=401.8    e=59.46    pred=234.06   real=0.2      r=-0.17 z=4.8 no
+  15:00:11 gpu_util    v=98       e=1.35     pred=50.64    real=29       r=+0.29 z=6.5 yes recalled
+  15:07:01 net_rx_kbs  v=4721.3   e=71.06    pred=2442.68  real=238.8    r=+0.04 z=7.1 no recalled
+  15:14:45 gpu_util    v=82       e=0.86     pred=42.24    real=28       r=+0.33 z=6.1 yes recalled
+  15:22:42 gpu_mem_mb  v=489      e=10990.5  pred=5634.76  real=489      r=+1.00 z=5.9 no recalled
+  15:29:29 load1       v=2.69     e=0.75     pred=1.74     real=2.94     r=+1.13 z=4.3 no
+  15:45:19 gpu_util    v=82       e=1.98     pred=42.79    real=34       r=+0.40 z=5.4 yes recalled
+  16:07:02 net_rx_kbs  v=30037.8  e=334.12   pred=15483    real=775      r=+0.01 z=7.1 no recalled
+  16:16:10 gpu_util    v=83       e=0.6      pred=42.63    real=79       r=+0.95 z=6.8 no recalled
+  16:22:44 gpu_mem_mb  v=489      e=11075.1  pred=5676.18  real=489      r=+1.00 z=7.0 no recalled
+  16:25:40 load1       v=2.82     e=0.88     pred=1.87     real=2.98     r=+1.08 z=4.1 no
+  16:42:45 load1       v=2.43     e=0.74     pred=1.6      real=2.21     r=+0.87 z=5.4 yes recalled
+  16:45:00 net_rx_kbs  v=1418.7   e=219.99   pred=831.33   real=278.1    r=+0.05 z=4.5 no recalled
+  16:47:17 gpu_util    v=83       e=1.82     pred=43.22    real=29       r=+0.33 z=5.9 yes recalled
+  17:07:01 net_rx_kbs  v=36792    e=618.43   pred=19067    real=1474.8   r=+0.02 z=7.1 no recalled
+  17:17:02 net_rx_kbs  v=11587.1  e=601.57   pred=6204.19  real=804.1    r=+0.02 z=6.7 no recalled
+  17:23:36 mem_avail_mb v=27522    e=24486.6  pred=26034.7  real=27542    r=+1.01 z=5.9 yes recalled
+  17:48:28 gpu_util    v=73       e=1.47     pred=37.95    real=61       r=+0.83 z=5.7 yes recalled
+  17:53:33 net_tx_kbs  v=196.1    e=32.94    pred=116.15   real=56.7     r=+0.15 z=4.0 yes recalled
+  18:00:05 gpu_util    v=82       e=1.83     pred=42.72    real=0        r=-0.02 z=5.6 no recalled
+  18:07:02 net_rx_kbs  v=11493.9  e=650.53   pred=6180.65  real=146.4    r=-0.05 z=6.6 no recalled
+  18:17:11 gpu_util    v=81       e=1.48     pred=42.04    real=28       r=+0.33 z=5.6 yes recalled
+  18:24:47 gpu_mem_mb  v=504      e=11081.4  pred=5686.93  real=489      r=+1.00 z=7.0 no recalled
+  18:50:13 gpu_util    v=83       e=2.32     pred=43.47    real=83       r=+1.00 z=5.4 no recalled
+  19:07:02 net_rx_kbs  v=19434.6  e=823.91   pred=10315.4  real=0.2      r=-0.04 z=6.8 no recalled
+  19:17:10 gpu_util    v=83       e=1.66     pred=43.14    real=27       r=+0.31 z=5.8 yes recalled
+  19:26:45 gpu_mem_mb  v=489      e=10971.1  pred=5625.21  real=489      r=+1.00 z=5.7 no recalled
+  19:51:42 gpu_util    v=82       e=1.22     pred=42.42    real=78       r=+0.95 z=6.4 no recalled
+  20:07:02 net_rx_kbs  v=55628.1  e=875.11   pred=28799.1  real=792.1    r=-0.00 z=7.1 no recalled
+  20:17:07 gpu_util    v=82       e=2.08     pred=42.84    real=1        r=-0.01 z=5.7 no recalled
+  20:28:03 gpu_mem_mb  v=708      e=11091.3  pred=5795.81  real=11071    r=+0.00 z=7.1 no recalled
+  20:44:55 net_tx_kbs  v=204.7    e=32.55    pred=120.34   real=119.3    r=+0.50 z=4.1 yes recalled
+  20:53:31 gpu_util    v=100      e=1.87     pred=51.92    real=91       r=+0.91 z=6.3 no recalled
+  20:55:03 net_rx_kbs  v=153596   e=538.62   pred=78598.1  real=519.8    r=-0.00 z=7.1 no recalled
+  21:07:01 net_rx_kbs  v=6151.9   e=511.64   pred=3388.17  real=370      r=-0.03 z=6.0 no recalled
+  21:17:02 net_rx_kbs  v=15398.1  e=525.02   pred=8110.29  real=992      r=+0.03 z=6.9 no recalled
+  21:22:44 mem_avail_mb v=27606    e=22350.7  pred=25030.9  real=27691    r=+1.02 z=5.5 yes recalled
+  21:25:18 net_tx_kbs  v=218.6    e=32.33    pred=127.33   real=53.6     r=+0.11 z=4.5 yes
+  21:55:16 gpu_util    v=81       e=1.19     pred=41.89    real=67       r=+0.82 z=6.3 yes recalled
+  22:07:02 net_rx_kbs  v=34811.3  e=729.78   pred=18111.3  real=376.9    r=-0.01 z=7.1 no recalled
+  22:17:09 gpu_util    v=82       e=1.42     pred=42.52    real=33       r=+0.39 z=6.1 yes recalled
+  22:22:45 mem_avail_mb v=27657    e=23242.4  pred=25493.8  real=27684    r=+1.01 z=5.4 yes recalled
+  22:57:13 gpu_util    v=81       e=0.46     pred=41.53    real=31       r=+0.38 z=6.5 yes recalled
+  23:07:02 net_rx_kbs  v=64927.5  e=740.97   pred=33476.1  real=216.3    r=-0.01 z=7.1 no recalled
+  23:17:08 gpu_util    v=83       e=0.61     pred=42.63    real=5        r=+0.05 z=6.7 no recalled
+  23:22:44 mem_avail_mb v=27701    e=24401.3  pred=26084.2  real=27673    r=+0.99 z=5.1 yes recalled
+  23:27:30 load1       v=2.91     e=1.21     pred=2.08     real=3.27     r=+1.21 z=4.9 no recalled
+  23:58:37 gpu_util    v=69       e=0.56     pred=35.47    real=80       r=+1.16 z=6.5 no recalled
+  00:07:02 net_rx_kbs  v=25441    e=642.66   pred=13289.8  real=608.6    r=-0.00 z=7.0 no recalled
+
+recognition of a past state worked in 209 of 254; reflexes fired: 0

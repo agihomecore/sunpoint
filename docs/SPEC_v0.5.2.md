@@ -98,3 +98,24 @@ Measured after this design was written; see the addendum of the review. It chang
   The caller's organ decides whether the load is the body's own thinking or a message from outside.
 - **Tool.** Fix or remove the "seconds near a frame capture" counter of `tools/proprio_probe.py`; add per-second
   raw output so that a rule can be tested against random seconds.
+
+## 8. Input from two days of work (25 November)
+Measured on 254 checked forecasts; see `docs/REVIEW_2026-11-25.md`. It sharpens the acceptance conditions.
+
+- **The rule of section 1 passes its condition in a replay.** Replayed over the stored moments in time order, the
+  per-signal median gives skill +0.34 against the fixed trivial forecasts (error 0.47 against 0.72). A replay is not
+  a live run: the condition still has to hold in the running observer.
+- **A tougher trivial forecast is logged and is the one that counts.** "For each signal: Mean or Persistence,
+  whichever had the smaller total error so far." Against it the learned rule leads by 0.06. New acceptance
+  condition for the forecast: **skill > 0 against the tougher trivial forecast on at least 200 live checks.**
+- **GPU load needs the cause, not a coefficient.** It is 39 % of the moments and has three outcomes of almost equal
+  frequency (returns, stays, in between). Per-process GPU evidence (section 2) is a condition for forecasting it,
+  not only for attributing it.
+- **Scheduled work first.** At least 43 % of the moments repeat by the clock: the same signal at the same minute in
+  8 to 32 different hours. The announcement of scheduled work (section 7) and a habit by time of day remove them.
+  New acceptance condition for attention: **no conscious moment that matches an announced job.**
+- **The rate alone is not a measure.** 0.5.1 already gives about 7 moments per hour — below the limit of 10 — after
+  its habit memory warmed up, and half of them are the schedule. The condition of section 2 stands only together
+  with the judgement of a reviewer who did not write the code.
+- **Tool.** `tools/baseline_check.py` now prints the replay, the tougher trivial forecast, medians, a block
+  bootstrap and the clock slots; `BRIEF=1` leaves out the list of moments.

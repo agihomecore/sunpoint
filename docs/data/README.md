@@ -1,4 +1,4 @@
-# Raw outputs of the measurements, 23 November 2026
+# Raw outputs of the measurements, 23–25 November 2026
 
 These files are the unedited outputs of the tools on the reference server. They are in Russian because the
 reference deployment speaks Russian; the English tools in `tools/` print the same tables in English.
@@ -13,6 +13,9 @@ reference deployment speaks Russian; the English tools in `tools/` print the sam
 | `baseline_45_moments.ru.txt` | `baseline_check.py <data dir>` at 14:54 | forecast vs Mean and Persistence on 45 moments, with a section per signal |
 | `baseline_74_moments.ru.txt` | `baseline_check.py <data dir>` at 17:40 | the same on 74 moments: five hours of work |
 | `state_1737.txt` | the commands are inside the file, 17:37 | the service's own counters and uptime, the times of all 76 moments, the metadata of the local language model |
+| `baseline_254_moments.txt` | `baseline_check.py <data dir>` at 00:10 on 25 November | two days: 254 checked forecasts, the replay of the 0.5.2 rule, the tougher trivial forecast, clock slots (English output) |
+| `state_2511_0010.txt` | shell counters over the observer log and the service, 00:10 on 25 November | moments per day and per hour, by signal, journal moments by source program, voice counters |
+| `proprio_2511_148s.md` | `proprio_probe.py 150` at 00:10 on 25 November | CPU by organ after two days of work |
 
 Glossary for the Russian organ names: глаза: векторы — eyes: vectors; глаза: полные кадры — eyes: full frames;
 память: потоки — memory: streams; память: консолидация — memory: consolidation; наблюдатель v0.5.1 — the observer;

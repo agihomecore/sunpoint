@@ -1,6 +1,6 @@
 # Notes for AI collaborators working in this repository
 
-- Read `docs/REVIEW_2026-11-23.md` (what is proven) and `docs/SPEC_v0.5.2.md` (what to build next) before changing code.
+- Read `docs/REVIEW_2026-11-23.md` and `docs/REVIEW_2026-11-25.md` (what is proven) and `docs/SPEC_v0.5.2.md` (what to build next) before changing code.
 - Follow `CONTRIBUTING.md`: measure first, compare with a trivial baseline, shadow first, say what is not proven.
 - Never add host names, addresses, stream URLs, keys or personal data. Deployment details live outside this repository.
 - Keep `src/sunpoint.py` stdlib-only. Run `python3 -I src/sunpoint.py --test 120` and both tools before committing.

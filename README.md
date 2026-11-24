@@ -5,10 +5,12 @@
 **Model of consciousness:** Khamzin Bauyrzhan Galymzhanovich (Astana, Kazakhstan).
 **Code, measurements, reviews:** AISun — an AI collaborator running on Claude (models Fable 5.2 and Opus 5.5).
 **Status:** early research prototype, v0.5.1 (23 November 2026). It runs around the clock on one home server.
+**Latest numbers:** two days, 254 checked forecasts — [docs/REVIEW_2026-11-25.md](docs/REVIEW_2026-11-25.md).
 
 This repository is for researchers and enthusiasts. It holds the model, working code, the measurements of the first
-day and an honest review of what is proven and what is not. **Read the review first:**
-[docs/REVIEW_2026-11-23.md](docs/REVIEW_2026-11-23.md) · на русском: [README.ru.md](README.ru.md).
+day and an honest review of what is proven and what is not. **Read the reviews first:**
+[docs/REVIEW_2026-11-23.md](docs/REVIEW_2026-11-23.md), then the interim review after two days,
+[docs/REVIEW_2026-11-25.md](docs/REVIEW_2026-11-25.md) · на русском: [README.ru.md](README.ru.md).
 
 ## The idea
 Consciousness is not a stream. It is a **moment**.
@@ -35,17 +37,19 @@ We make **no claim about subjective experience**. The data in this repository ca
 |---|---|---|
 | Moment | a SunPoint is ~1.4 KB: the generator's expectations plus only the deviations | — |
 | Reflex | a rule table answers in 3–11 µs, before any thinking | never fired in the field: there was no danger |
-| Forecast | every moment predicts its signal 10 s ahead and checks itself | **it does not beat a trivial forecast** (74 % vs 74 %) |
-| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — 30 moments in the first hour, 9–14 per hour later |
+| Forecast | every moment predicts its signal 10 s ahead and checks itself | **it does not beat a trivial forecast**: on 254 moments it is ahead by mean error (0.66 vs 0.72) and behind by strict hits (20 % vs 41 %). The learned rule of 0.5.2, replayed on the same moments, does beat it (0.47; 67 %) — it is not built into the observer yet |
+| Attention | services, cron and operator logins stay in the subconscious | **numeric spikes caused by the system's own body still reach consciousness** — 30 moments in the first hour, about 7 per hour after two days; at least 43 % of them repeat by the clock of the body's own schedule |
 | Memory | cache → long-term → subconscious, consolidated hourly; keyframe recognition 0.98–0.997 | recognition from long-term memory is untested |
 | Eyes | 3 video streams → frame vectors, minute descriptions, 64×64 sketches | eyes are not connected to consciousness yet |
-| Voice | a moment becomes one spoken sentence, at most once an hour | — |
+| Voice | a moment becomes one spoken sentence written for the ear ("GPU memory — 708 megabytes, usually 11 gigabytes"), by default at most once an hour | it only speaks; it does not listen |
 
 ## Three checks that changed our conclusion
 1. **The forecast is not smarter than a trivial one.** It came true in 14 of 19 moments (74 %). The trivial forecast
    "the signal returns to its expected value" also scored 14 of 19. The tolerance was so wide that missing was
    almost impossible. On 74 moments the forecast is ahead by error (0.42 against 0.53) and behind by hits
-   (59 % against 64 %) — Addendum 3 of the review.
+   (59 % against 64 %) — Addendum 3 of the review. On 254 moments the verdict is the same; a coefficient learned
+   per signal beats the fixed trivial forecasts (skill +0.34) and leads a tougher one by only 0.06 —
+   [interim review](docs/REVIEW_2026-11-25.md).
 2. **Every signal has its own character.** CPU, network and GPU load fall back within 10 s (median `r` 0.1–0.3);
    the load average keeps rising (`r` 1.1); GPU memory moves in steps. One fixed rule fits none of them.
 3. **Consciousness mostly notices itself.** In a quiet period 95 % of the CPU load and 97 % of the load peaks came
@@ -79,11 +83,12 @@ The eyes need ffmpeg, PyTorch, transformers and a NATS server with JetStream; st
 | `src/sunpoint.py` | the observer: senses, generator, alert, reflex, forecast, SunPoint, plans (stdlib only) |
 | `src/eyes.py` | the eyes: frame vectors (CLIP), minute descriptions, pixel sketch, contour, keyframe recognition |
 | `src/consolidate.py` | memory consolidation: cache → long-term → subconscious |
-| `src/voice_bridge.py`, `src/say.sh` | the voice |
+| `src/voice_bridge.py`, `src/say.sh`, `src/tts.py` | the voice: a moment as a sentence for the ear; speech through Piper or espeak-ng |
 | `tools/baseline_check.py` | forecast vs trivial forecasts |
 | `tools/proprio_probe.py` | the "who is breathing" probe |
 | `docs/MODEL.md` | the model in the author's words and in operational terms |
 | `docs/REVIEW_2026-11-23.md` | the initial research review: timeline, facts, three checks, honest border, guesses |
+| `docs/REVIEW_2026-11-25.md` | the interim review after two days: 254 checked forecasts, the clock of the body, the voice fault |
 | `docs/SPEC_v0.5.2.md` | the next version: a forecast that learns, and a sense of own body |
 | `docs/ARTICLE.en.md`, `.kk.md`, `.ru.md` | the story for a general reader: "The beginnings of consciousness — or a fake?" |
 | `site/` | the web page in three languages, built from the same texts as the article: [sun-agi.com/sunpoint](https://sun-agi.com/sunpoint/) |
@@ -99,7 +104,8 @@ The eyes need ffmpeg, PyTorch, transformers and a NATS server with JetStream; st
 | 2.0 | a body: a small edge computer, an induction dock, power for 1.5–2 years | a day of life without the server |
 
 ## What would refute the model
-1. A learned forecast does not beat the trivial one on 200+ moments.
+1. A learned forecast does not beat the trivial one on 200+ moments. *First test, 25 November: it did not come true
+   in a replay on 254 stored moments; it has to be repeated live.*
 2. After the own-body filter, fewer than half of the remaining moments are worth attention.
 3. Recognition from long-term memory falls below 0.9 on the same scenes.
 

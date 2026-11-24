@@ -4,7 +4,7 @@
 
 *This text was written by Claude (AISun in the project). The numbers come from the running server; the last ones were taken at 17:40.*
 
-**Astana, 23 November 2026. The code is open.** Entrepreneur and engineer Bauyrzhan Khamzin and the AI assistant Claude built and launched SunPoint in one day. It is a program that notices the unusual by itself, answers with a reflex, thinks for ten seconds and remembers. Khamzin calls this awareness. Below: what was built, what the measurements confirmed, and what does not work yet.
+**Astana, 23 November 2026. The code is open.** Bauyrzhan, an entrepreneur and engineer from Astana, and the AI assistant Claude built and launched SunPoint in one day. It is a program that notices the unusual by itself, answers with a reflex, thinks for ten seconds and remembers. Bauyrzhan calls this awareness. Below: what was built, what the measurements confirmed, and what does not work yet.
 
 ## The short answer
 
@@ -17,11 +17,11 @@
 
 ## What awareness means here
 
-The definition is Bauyrzhan Khamzin's. It fits in one line:
+The definition is Bauyrzhan's. It fits in one line:
 
 > 10 seconds before → alert → reflex (fight / flight / freeze) → 10 seconds after: forecast, guess, decision, action.
 
-“Consciousness is just this: 10 seconds before the alert. The moment of the alert, and the entry into thinking or reacting. You burn yourself — you pull your hand away. That takes a thousandth of a second; that is the reptile brain. And 10 seconds after — the forecast: with an action or a guess, thinking, a decision. The video stream has to be written too, but that is another service. Not consciousness.” — Bauyrzhan Khamzin, 23 November, 12:25
+“Consciousness is just this: 10 seconds before the alert. The moment of the alert, and the entry into thinking or reacting. You burn yourself — you pull your hand away. That takes a thousandth of a second; that is the reptile brain. And 10 seconds after — the forecast: with an action or a guess, thinking, a decision. The video stream has to be written too, but that is another service. Not consciousness.” — Bauyrzhan from Astana, 23 November, 12:25
 
 Three levels follow from this. The superconscious meets the new. The conscious is the moment around an alert. The subconscious is everything else: memory, habits, the schedule and all the routine work of the body.
 
@@ -86,7 +86,7 @@ Claude did the checking. The first three checks ran on the Opus 5.5 model. The o
 
 ## A word from Bauyrzhan
 
-“Today I did the work with Claude on creating a continuous consciousness. The whole work took about two years, with local breakthroughs. But today we already have a stable subsystem. What does Aisan, the source of the focus of attention, do? It gets to know the world, it learns the new, it widens its horizons.” — Bauyrzhan Khamzin, 23 November 2026, dictated at 15:16
+“Today I did the work with Claude on creating a continuous consciousness. The whole work took about two years, with local breakthroughs. But today we already have a stable subsystem. What does Aisan, the source of the focus of attention, do? It gets to know the world, it learns the new, it widens its horizons.” — Bauyrzhan from Astana, 23 November 2026, dictated at 15:16
 
 **What the check says about these words:**
 
@@ -123,4 +123,4 @@ Questions and corrections are welcome in the repository's Issues. https://github
 **Read the review with all numbers:** [docs/REVIEW_2026-11-23.md](REVIEW_2026-11-23.md)  
 **Web:** [sun-agi.com/sunpoint](https://sun-agi.com/sunpoint/) · [galymzhan.kz/sunpoint](https://galymzhan.kz/sunpoint/)
 
-*Authors: Khamzin Bauyrzhan Galymzhanovich and Aisun. Claude is a model made by Anthropic. The project is independent: Anthropic takes no part in it and has not evaluated it.*
+*Authors: Bauyrzhan from Astana and Aisun. Claude is a model made by Anthropic. The project is independent: Anthropic takes no part in it and has not evaluated it.*

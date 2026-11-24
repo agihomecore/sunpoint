@@ -51,3 +51,13 @@ voice on loudspeakers (13:04).
   the coefficient for GPU load, scheduled work first.
 - Raw outputs: `docs/data/baseline_254_moments.txt`, `state_2511_0010.txt`, `proprio_2511_148s.md`.
 - Not done: 0.5.2 itself. It was planned for 24 November.
+
+## 25 November, 01:30 — version 0.5.2
+| Version | Change | Measured |
+|---|---|---|
+| **0.5.2** | the forecast learns a return coefficient per signal and is scored against three trivial forecasts; the body's scheduled work — by announcement or by the clock — goes to the subconscious; the generator survives a restart and is rebuilt from stored moments on a first start | self-test and dry runs pass; **no live numbers yet** |
+
+- `src/sunpoint.py`: `--selftest`; `generator.json`, `announce.jsonl`; new heartbeat counters `checks`, `skill`, `skill_fixed`, `by_clock`, `announced`.
+- `src/consolidate.py` announces itself when `SUNPOINT_ANNOUNCE` is set.
+- `docs/SPEC_v0.5.2.md`, section 9: what was built and what was not. The cause of a spike by process moves to 0.5.3.
+- A stored moment keeps the same fields as before plus `forecast.r_hat`, `forecast.pick`, `forecast_check.r`, `.err`, `.triv`. "Came true" is now strict (a quarter of the spike), so hit rates of 0.5.2 are not comparable with the wide tolerance of 0.5.1.

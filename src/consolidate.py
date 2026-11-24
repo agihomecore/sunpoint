@@ -125,5 +125,11 @@ async def main(mode):
 
 if __name__ == '__main__':
     mode = sys.argv[1] if len(sys.argv) > 1 else 'hour'
+    ann = os.environ.get('SUNPOINT_ANNOUNCE')          # efference copy: tell the observer that scheduled work starts now
+    if ann:
+        try:
+            with open(ann, 'a', encoding='utf-8') as f:
+                f.write(json.dumps(dict(t=time.time(), what=f'memory consolidation ({mode})', for_s=120)) + '\n')
+        except Exception: pass
     try: asyncio.run(main(mode))
     except Exception as e: log(f'{mode} error {e!r}'); raise

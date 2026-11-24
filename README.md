@@ -4,7 +4,8 @@
 
 **Model of consciousness:** Khamzin Bauyrzhan Galymzhanovich (Astana, Kazakhstan).
 **Code, measurements, reviews:** AISun — an AI collaborator running on Claude (models Fable 5.2 and Opus 5.5).
-**Status:** early research prototype, v0.5.1 (23 November 2026). It runs around the clock on one home server.
+**Status:** early research prototype, v0.5.2 (25 November 2026). It runs around the clock on one home server.
+**New in 0.5.2:** the forecast learns per signal, the body's own clock goes to the subconscious, the generator survives a restart. Built and self-tested; its live numbers are not measured yet — everything below was measured on 0.5.1.
 **Latest numbers:** two days, 254 checked forecasts — [docs/REVIEW_2026-11-25.md](docs/REVIEW_2026-11-25.md).
 
 This repository is for researchers and enthusiasts. It holds the model, working code, the measurements of the first
@@ -65,6 +66,7 @@ The observer needs Linux and Python 3.9+, nothing else.
 ```bash
 git clone https://github.com/agihomecore/sunpoint && cd sunpoint/src
 
+python3 -I sunpoint.py --selftest                 # checks of the forecast rule, the clock habit and the saved generator
 python3 -I sunpoint.py --test 120                 # dry run with simulated time
 SPIKE_AT=40 python3 -I sunpoint.py --test 120     # the same with a CPU spike: a SunPoint is stored
 cat window/first_voice.md                         # its first words
@@ -97,7 +99,8 @@ The eyes need ffmpeg, PyTorch, transformers and a NATS server with JetStream; st
 ## Roadmap
 | Step | What | Measure |
 |---|---|---|
-| 0.5.2 | the forecast learns a return coefficient per signal; cause of an alert by process; own body goes to the subconscious; habit memory survives a restart | gain over the trivial forecast > 0; ≤ 10 moments per hour |
+| 0.5.2 — built 25.11 | the forecast learns a return coefficient per signal, with three trivial forecasts scored next to it; scheduled work of the body (by announcement or by the clock) goes to the subconscious; the generator survives a restart | live skill > 0 against the tougher trivial forecast on 200+ checks; no conscious moment from the body's schedule |
+| 0.5.3 | the cause of an alert by process: own organs and the operator go to the subconscious; the forecast for GPU load uses the cause | fewer than half of the remaining moments are internal |
 | 0.6 | eyes in consciousness: a frame not recognised after a change is *new* → a moment; one vector for server and eyes; words from a vision-language model | the first moment about the outside world |
 | 0.7 | reflexes learn from lessons; deferred items as a morning list; a second, independent critic | the first learned reflex |
 | 0.8 | recognition from long-term memory: "something similar happened — this is what we did" | memory answers with an action |

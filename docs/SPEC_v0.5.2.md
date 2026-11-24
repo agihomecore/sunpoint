@@ -1,6 +1,7 @@
 # SunPoint 0.5.2 — a forecast that learns, and a sense of own body
 
-Status: design, written 23 November 2026 from the findings of the initial research review.
+Status: sections 1 and 3 and the schedule part of sections 7–8 are built in `src/sunpoint.py` 0.5.2 (25 November 2026). Section 2 — the cause of a spike by process — is not built and moves to 0.5.3. Nothing here has live numbers yet.
+Written 23 November 2026 from the findings of the initial research review.
 Goal: close the two gaps of 0.5.1 — the forecast does not beat a trivial one, and consciousness mostly notices itself.
 
 ## 1. The forecast learns
@@ -119,3 +120,11 @@ Measured on 254 checked forecasts; see `docs/REVIEW_2026-11-25.md`. It sharpens 
   with the judgement of a reviewer who did not write the code.
 - **Tool.** `tools/baseline_check.py` now prints the replay, the tougher trivial forecast, medians, a block
   bootstrap and the clock slots; `BRIEF=1` leaves out the list of moments.
+
+## 9. What 0.5.2 does, as built (25 November)
+- **Forecast.** `r_hat(k)`: the median of the last 60 `r` of the signal when it has 3; else the median over all signals when there are 5; else 0.5; clipped to [−0.5, 2]. "Came true" is strict: error ≤ 0.25 of the spike. Every check scores the model, Mean, Persistence and the tougher trivial forecast (per signal, the better of the two so far, chosen before the check). `skill` (against the tougher one) and `skill_fixed` are in the heartbeat. A moment says its error: "came true (error 0.05; trivial forecast 0.25)".
+- **The body's clock.** A numeric spike of the same signal at the same minute of the hour (±1), seen in 3 or more other hours of the last 48, and not stronger than twice the strongest of them, goes to `subconscious.jsonl` with the cause. A reflex always stays conscious. The spike still gets a forecast and a check, so the forecast learns from it.
+- **Announcements.** A line `{"t": unix time, "what": "...", "for_s": 120}` in `announce.jsonl` (or `$SUNPOINT_ANNOUNCE`) sends numeric spikes of that time to the subconscious. `src/consolidate.py` writes one when `$SUNPOINT_ANNOUNCE` is set.
+- **Generator.** `generator.json`: expectations, spreads, habit strengths as counts per band, journal habits, `r` histories, clock slots, the last 500 state vectors. Written every minute and on stop. Expectations are restored when the file is younger than 6 hours (warm-up 30 s); what was learned is restored at any age. On a first start the learned memory is rebuilt from stored moments; `$SUNPOINT_BOOTSTRAP` names other data directories to learn from.
+- **Checks.** `python3 -I src/sunpoint.py --selftest`.
+- **Known gaps.** The clock habit can hide a real event that happens to fall on a habitual minute with a habitual strength. An announcement hides every numeric spike in its time, whatever the signal. Both are logged in `subconscious.jsonl` with their cause, so they can be counted and judged.

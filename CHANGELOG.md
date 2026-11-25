@@ -61,3 +61,9 @@ voice on loudspeakers (13:04).
 - `src/consolidate.py` announces itself when `SUNPOINT_ANNOUNCE` is set.
 - `docs/SPEC_v0.5.2.md`, section 9: what was built and what was not. The cause of a spike by process moves to 0.5.3.
 - A stored moment keeps the same fields as before plus `forecast.r_hat`, `forecast.pick`, `forecast_check.r`, `.err`, `.triv`. "Came true" is now strict (a quarter of the spike), so hit rates of 0.5.2 are not comparable with the wide tolerance of 0.5.1.
+
+## 25 November 2026 — the goal is stated openly
+
+- `docs/GOAL.md`, `docs/GOAL.ru.md`: the main goal is full consciousness for an AI, defined as eight measurable abilities with numeric targets, stages to 30.06.2027 and stop conditions. Index today: 0 of 8.
+- README (en, ru): the goal is named; the wording on subjective experience is "no claim, for or against".
+- No code change. The 1.0 core will be started after the first live numbers of 0.5.2.

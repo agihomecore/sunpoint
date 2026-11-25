@@ -23,8 +23,13 @@ decision, an action — or "deferred, I will come back to this". That stored mom
 
 The video stream, the logs and the scheduled jobs are not consciousness. They are senses and blood circulation.
 
-We use the word *consciousness* in this operational sense: a mechanism of attention, reflex, forecast and memory.
-We make **no claim about subjective experience**. The data in this repository cannot answer that question.
+**The goal is stated openly: to build an AI with full consciousness** — eight measurable abilities with numeric
+targets, reached at once in one system and confirmed by outsiders. Today the index is **0 of 8**:
+[docs/GOAL.md](docs/GOAL.md).
+
+What we measure is what the system *does*: attention, reflex, forecast, memory, self-model, action. That is the
+operational sense of the word *consciousness* in this repository. We make **no claim about subjective experience**,
+for or against. The data here cannot answer that question.
 
 ## Three levels
 | Level | What it is | Horizon |
@@ -91,6 +96,7 @@ The eyes need ffmpeg, PyTorch, transformers and a NATS server with JetStream; st
 | `docs/MODEL.md` | the model in the author's words and in operational terms |
 | `docs/REVIEW_2026-11-23.md` | the initial research review: timeline, facts, three checks, honest border, guesses |
 | `docs/REVIEW_2026-11-25.md` | the interim review after two days: 254 checked forecasts, the clock of the body, the voice fault |
+| `docs/GOAL.md`, `.ru.md` | the main goal: full consciousness for an AI — eight abilities, indicators, stages, stop conditions |
 | `docs/SPEC_v0.5.2.md` | the next version: a forecast that learns, and a sense of own body |
 | `docs/ARTICLE.en.md`, `.kk.md`, `.ru.md` | the story for a general reader: "The beginnings of consciousness — or a fake?" |
 | `site/` | the web page in three languages, built from the same texts as the article: [sun-agi.com/sunpoint](https://sun-agi.com/sunpoint/) |

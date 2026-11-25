@@ -66,4 +66,5 @@ voice on loudspeakers (13:04).
 
 - `docs/GOAL.md`, `docs/GOAL.ru.md`: the main goal is full consciousness for an AI, defined as eight measurable abilities with numeric targets, stages to 30.06.2027 and stop conditions. Index today: 0 of 8.
 - README (en, ru): the goal is named; the wording on subjective experience is "no claim, for or against".
+- Goal 1.1 (same day): not imitation — a circle of models from different makers that talk and judge freely; four quick daily indicators (section 8 of the goal).
 - No code change. The 1.0 core will be started after the first live numbers of 0.5.2.

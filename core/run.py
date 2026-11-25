@@ -210,6 +210,7 @@ def selftest():
         json.dump(['look at the sky at sunrise'], f)
     core.dream.look(ws, core.reserve, t + 5000)
     assert not ws.cands, 'no dreams while a duty is late'
+    assert parts.Dream(d).last == core.dream.last, 'a new life does not dream again at once'
     core.reserve.state = {'all': {'ok': True}}
     core.dream.look(ws, core.reserve, t + 5000)
     m = ws.tick(t + 5000)
@@ -235,7 +236,7 @@ def selftest():
              'check': {'hit': 0}}
     core.critic.on_close(fresh, t + 6040)
     assert fresh['critic']['worth'] >= 0.7, fresh
-    assert fresh['levels'] == [3, 8] and core.gate.fed[8] == fresh['t'], fresh     # no local cause; forecast missed
+    assert fresh['levels'] == [3, 8] and core.gate.fed[8] == fresh['t'] and fresh['quality'] == 'the clean conductor', fresh     # no local cause; forecast missed
     assert parts.level_of('reserve', 'duty:x', 'self') == 4 and parts.level_of('spike', 'cpu', 'operator') == 2
     assert parts.level_of('spike', 'mem_avail', 'body') == 1 and parts.level_of('spike', 'cpu', 'self') == 5
     core.gate.bored, core.gate.tuned_out, core.gate.ignite = {'cpu': (2, t + 9000)}, 4, 1.0

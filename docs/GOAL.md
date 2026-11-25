@@ -137,3 +137,18 @@ The gatekeeper carries a map of eight levels, after Leary's eight circuits. **It
 | 8 | non-local | beyond itself | events with no local cause; free dreams |
 
 Thin places, said in advance: level 3 has no words of its own yet (speech is a later stage); level 2 sees only the operator, not other minds; level 8 is named honestly as "what I cannot explain from here", nothing more.
+
+**The qualities.** The map above was first put together from two earlier notes. The same day Bauyrzhan gave his own map, made on 28.09.2026 with AIKYN: for every circuit a quality to develop and its practice. The core now carries it (`parts.QUALITY`), and every moment is stored with the quality of its level. Its motto: constancy, to see clearly, to respond with awareness.
+
+| Level | Quality | What the core does |
+|---|---|---|
+| 1 | the turn: notice "I am being carried" | every fifth thing tuned out by habit is looked at again |
+| 2 | the filter: choose what to enter | its own work is damped, the other passes |
+| 3 | lower importance | what is not worth the field is habituated to for an hour |
+| 4 | restraint, quiet work | a forecast that came true and a duty done are not celebrated |
+| 5 | trust with clarity | a free dream enters when duty is in order; the critic keeps discernment |
+| 6 | acceptance | an accepted and a refused change of growth are recorded alike |
+| 7 | continuity and responsibility | memory and lessons pass through a restart |
+| 8 | the clean conductor | the report speaks only from the raw record |
+
+His note stands here too: this is a working comparison of two philosophical models, not a scientific diagnostic scale.

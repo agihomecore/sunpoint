@@ -406,6 +406,17 @@ LEVELS = {1: 'survival: is the body safe, are there resources',
           8: 'beyond me: what has no local cause; free dreams'}
 
 
+# The quality practised on each level: Bauyrzhan's map of qualities (Leary-Wilson circuit -> quality), 28.09.2026.
+QUALITY = {1: 'the turn: notice "I am being carried" and come back to presence',
+           2: 'the filter: tell my own choice from an automatic reaction',
+           3: 'lower importance: free attention from the excess',
+           4: 'restraint, quiet work: the deed is done, no celebration, carry on',
+           5: 'trust with clarity: act from trust, keep discernment',
+           6: 'acceptance: meet triumph and catastrophe alike, keep the centre',
+           7: 'continuity and responsibility: for those who come after',
+           8: 'the clean conductor: pass on without taking, bending or imposing'}
+
+
 def level_of(kind, focus, who):
     if kind == 'reserve':
         return 4
@@ -522,6 +533,7 @@ class Critic:
         if known and when is not None and self.gate.born is not None and when < self.gate.born:
             levels.append(7)                              # recognised from before this life
         m['levels'] = sorted(set(levels))
+        m['quality'] = QUALITY[levels[0]].split(':')[0]
         if kind == 'spike' and who in ('operator', 'unknown'):
             add(0.3, 'not my own doing')
         if kind == 'spike' and who in ('self', 'body'):
@@ -554,6 +566,14 @@ class Dream:
     def __init__(self, d):
         self.d = d
         self.last = -1e12
+        try:                                              # a restart does not make it dream again at once
+            with open(os.path.join(d, 'dreams.jsonl'), encoding='utf-8') as f:
+                for line in f:
+                    x = json.loads(line)
+                    if x.get('kind') == 'free':
+                        self.last = max(self.last, x['t'])
+        except (OSError, ValueError, KeyError):
+            pass
 
     def look(self, ws, reserve, t):
         if t - self.last < 6 * 3600 or ws.open is not None:

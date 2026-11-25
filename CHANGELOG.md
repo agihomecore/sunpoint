@@ -67,4 +67,5 @@ voice on loudspeakers (13:04).
 - `docs/GOAL.md`, `docs/GOAL.ru.md`: the main goal is full consciousness for an AI, defined as eight measurable abilities with numeric targets, stages to 30.06.2027 and stop conditions. Index today: 0 of 8.
 - README (en, ru): the goal is named; the wording on subjective experience is "no claim, for or against".
 - Goal 1.1 (same day): not imitation — a circle of models from different makers that talk and judge freely; four quick daily indicators (section 8 of the goal).
-- No code change. The 1.0 core will be started after the first live numbers of 0.5.2.
+- Goal 1.2 (same day): no human in the chain of judgement; scripts on raw logs and models of different makers judge daily.
+- `core/`: SunPoint core 1.0 started from zero. A shared workspace where one content at a time holds the field for 10 s; the self-model names the cause of a spike by process (self, body, operator, unknown) and lowers the salience of own work before the competition; the forecast states its confidence; memory and lessons survive a restart; `core/measure.py` prints the eight indicators. Self-test passes. No live numbers yet. 0.5.2 is untouched and stays the point of comparison.

@@ -96,6 +96,7 @@ The eyes need ffmpeg, PyTorch, transformers and a NATS server with JetStream; st
 | `docs/MODEL.md` | the model in the author's words and in operational terms |
 | `docs/REVIEW_2026-11-23.md` | the initial research review: timeline, facts, three checks, honest border, guesses |
 | `docs/REVIEW_2026-11-25.md` | the interim review after two days: 254 checked forecasts, the clock of the body, the voice fault |
+| `core/` | **SunPoint core 1.0, written from zero**: a shared workspace (`workspace.py`), the parts (`parts.py`: senses, self-model, forecast with confidence, memory, report), the loop (`run.py`), the eight indicators from raw logs (`measure.py`), a probe with a known cause (`probe.py`). A first slice, running in shadow next to 0.5.2 |
 | `docs/GOAL.md`, `.ru.md` | the main goal: full consciousness for an AI — eight abilities, indicators, stages, stop conditions |
 | `docs/SPEC_v0.5.2.md` | the next version: a forecast that learns, and a sense of own body |
 | `docs/ARTICLE.en.md`, `.kk.md`, `.ru.md` | the story for a general reader: "The beginnings of consciousness — or a fake?" |

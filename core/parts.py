@@ -12,12 +12,25 @@ import math
 import os
 import time
 
-Z_SPIKE = 4.0          # a reading this many sigmas away is offered to the workspace
+# The surface of the sphere: numbers the system may change by itself (core/grow.py), inside these bounds.
+G = {'z_spike': 4.0,        # a reading this many sigmas away is offered to the workspace
+     'refractory': 30.0,    # seconds a signal stays quiet after speaking
+     'alpha': 1 / 120,      # how fast the expectation follows the signal
+     'r_keep': 60,          # past checks kept per signal
+     'w_self': 0.2,         # salience of own work
+     'w_body': 0.5,         # salience of the body's work
+     'ignite': 1.0}         # salience needed to enter the field
+BOUNDS = {'z_spike': (3.0, 8.0), 'refractory': (10.0, 120.0), 'alpha': (1 / 600, 1 / 30), 'r_keep': (10, 200),
+          'w_self': (0.05, 0.5), 'w_body': (0.2, 1.0), 'ignite': (0.8, 2.0)}
+# The centre of the sphere: not changed by the system.
 WARMUP = 60            # readings before a signal may speak
-REFRACTORY = 30.0      # seconds a signal stays quiet after speaking
-R_KEEP = 60            # past checks kept per signal
 STRICT = 0.25          # a forecast "came true" if its error is within this share of the spike
-WEIGHT = {'self': 0.2, 'body': 0.5, 'operator': 1.0, 'unknown': 1.0}
+Z_UNIT = 4.0           # salience 1.0 = four sigmas
+
+
+def weight(who):
+    return {'self': G['w_self'], 'body': G['w_body']}.get(who, 1.0)
+
 FLOOR = {'load1': 0.05, 'cpu': 1.0, 'mem_avail': 20.0, 'net_rx': 2000.0, 'net_tx': 2000.0,
          'ctxt': 200.0, 'running': 0.5}
 
@@ -37,14 +50,15 @@ class Gen:
         self.n = 0
         self.floor = floor
 
-    def step(self, x, alpha=1 / 120):
+    def step(self, x):
+        alpha = G['alpha']
         if self.m is None:
             self.m, self.n = x, 1
             return 0.0, x
         m = self.m
         sd = max(math.sqrt(self.v), self.floor, 0.02 * abs(m))
         z = (x - m) / sd
-        a = alpha / 4 if abs(z) > Z_SPIKE else alpha      # a spike moves the expectation slowly
+        a = alpha / 4 if abs(z) > G['z_spike'] else alpha      # a spike moves the expectation slowly
         if self.n < WARMUP:
             a = max(a, 1 / (self.n + 1))
         self.m = m + a * (x - m)
@@ -114,8 +128,8 @@ class Senses:
             g = self.gen[k]
             z, e = g.step(x)
             self.last[k], self.z[k], self.exp[k] = x, z, e
-            if g.n > WARMUP and abs(z) >= Z_SPIKE and t >= self.quiet.get(k, 0):
-                self.quiet[k] = t + REFRACTORY
+            if g.n > WARMUP and abs(z) >= G['z_spike'] and t >= self.quiet.get(k, 0):
+                self.quiet[k] = t + G['refractory']
                 out.append((k, x, e, z))
         return out
 
@@ -211,7 +225,7 @@ class SelfModel:
             return
         cause = self.cause(t)
         c['data']['cause'] = cause
-        c['sal'] *= WEIGHT.get(cause['who'], 1.0)
+        c['sal'] *= weight(cause['who'])
 
 
 class Forecast:
@@ -270,7 +284,7 @@ class Forecast:
         self.hits.setdefault(k, []).append(c['hit'])
         self.errs.setdefault(k, []).append((c['mean'], c['pers']))
         for d in (self.rs, self.hits, self.errs):
-            del d[k][:-R_KEEP]
+            del d[k][:-int(G['r_keep'])]
         self.n += 1
         self.e_model += c['err']
         self.e_mean += c['mean']

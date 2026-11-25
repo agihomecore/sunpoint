@@ -16,7 +16,8 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from workspace import Workspace                                            # noqa: E402
-from parts import Senses, SelfModel, Forecast, Memory, Report, Z_SPIKE     # noqa: E402
+import parts                                                               # noqa: E402
+from parts import Senses, SelfModel, Forecast, Memory, Report, Z_UNIT      # noqa: E402
 
 
 class Core:
@@ -32,7 +33,28 @@ class Core:
         self.ws.subscribe(self.me)
         self.ws.subscribe(self.mem)
         self.ws.subscribe(self.fc)
+        self.genome_m = None
+        self.genome()
         self.restored = self.restore()
+
+    def genome(self):
+        """Take up the numbers the system has grown for itself (core/grow.py)."""
+        p = os.path.join(self.ws.d, 'genome.json')
+        try:
+            m = os.path.getmtime(p)
+            if m == self.genome_m:
+                return
+            with open(p, encoding='utf-8') as f:
+                g = json.load(f)
+        except (OSError, ValueError):
+            return
+        for k, (lo, hi) in parts.BOUNDS.items():
+            if k in g.get('g', {}):
+                parts.G[k] = min(hi, max(lo, g['g'][k]))
+        self.ws.ignite = parts.G['ignite']
+        self.genome_m = m
+        self.ws.log('life.jsonl', {'t': round(time.time(), 1), 'event': 'genome', 'version': g.get('version'),
+                                   'g': parts.G})
 
     def restore(self):
         """Continuity: what was learned before a restart is learned still."""
@@ -55,9 +77,12 @@ class Core:
 
     def step(self, t):
         vals = self.senses.read()
+        if vals:                                          # the raw stream, for replay by core/grow.py
+            self.ws.log('raw-' + time.strftime('%Y%m%d', time.gmtime(t)) + '.jsonl',
+                        [round(t, 1)] + [round(vals[k], 2) for k in parts.FLOOR])
         self.me.beat(t)
         for k, v, e, z in self.senses.feel(vals, t):
-            self.ws.post('senses', 'spike', abs(z) / Z_SPIKE, {'focus': k, 'v': round(v, 3), 'e': round(e, 3),
+            self.ws.post('senses', 'spike', abs(z) / Z_UNIT, {'focus': k, 'v': round(v, 3), 'e': round(e, 3),
                                                                'z': round(z, 2)})
         return self.ws.tick(t)
 
@@ -92,6 +117,7 @@ def run(d, seconds=None, burn_at=None):
                 core.beat(t)
             if i % 60 == 0:
                 core.ws.log('hb.jsonl', core.rep.state(t))
+                core.genome()
             i += 1
             time.sleep(max(0.0, 1.0 - (time.time() - t)))
     except KeyboardInterrupt:
@@ -117,7 +143,7 @@ def selftest():
     t = 1000.0
 
     def spike(focus, z, v=10.0, e=2.0):
-        ws.post('senses', 'spike', abs(z) / Z_SPIKE, {'focus': focus, 'v': v, 'e': e, 'z': z})
+        ws.post('senses', 'spike', abs(z) / Z_UNIT, {'focus': focus, 'v': v, 'e': e, 'z': z})
 
     # 1. attention: own work needs a far stronger spike than the outside to enter the field
     who[0] = {'who': 'self'}

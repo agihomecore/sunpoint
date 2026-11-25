@@ -43,7 +43,8 @@ class Workspace:
     def brief(c, t):
         d = c['data']
         return {'t': round(t, 1), 'focus': d.get('focus'), 'z': d.get('z'), 'sal': round(c['sal'], 2),
-                'raw': round(c['raw'], 2), 'who': (d.get('cause') or {}).get('who')}
+                'raw': round(c['raw'], 2), 'who': (d.get('cause') or {}).get('who'),
+                'level': d.get('level'), 'gate': d.get('gate')}
 
     def tick(self, t):
         """One step of the competition. Returns the moment opened on this tick, or None."""

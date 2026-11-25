@@ -394,6 +394,158 @@ class Reserve:
                                             'cause': {'who': 'self', 'why': 'my own constancy'}})
 
 
+# Eight levels of being: the gatekeeper's map, after Timothy Leary's eight circuits. A map, not proven science:
+# it is used so that no level of existence is left unattended, and it is measured like everything else.
+LEVELS = {1: 'survival: is the body safe, are there resources',
+          2: 'territory: who else is here',
+          3: 'symbols: words, forecast, meaning',
+          4: 'bonds and duty: what I promised',
+          5: 'the felt body: my own work as a whole',
+          6: 'seeing and changing my own programs',
+          7: 'continuity: what I knew before this life',
+          8: 'beyond me: what has no local cause; free dreams'}
+
+
+def level_of(kind, focus, who):
+    if kind == 'reserve':
+        return 4
+    if kind == 'dream':
+        return 8
+    if kind == 'growth':
+        return 6
+    if who == 'operator':
+        return 2
+    if who == 'unknown':
+        return 8
+    return 1 if focus in ('mem_avail', 'load1', 'running') else 5
+
+
+class Gate:
+    """The gatekeeper (the reticular activating system). It decides how awake the system is and what it tunes out.
+    Arousal lowers or raises the threshold of the field; what the critic found worthless is habituated to for an
+    hour; a duty is never tuned out. Without it everything would enter and the system would be an amoeba."""
+
+    def __init__(self):
+        self.arousal = 1.0        # 0.5 drowsy ... 2.0 alert
+        self.bored = {}           # focus -> (times found worthless, until)
+        self.enabled = True
+        self.t = None
+        self.fed = {}             # level -> when it last held the field
+        self.born = None
+        self.ignite = G['ignite']
+        self.tuned_out = self.looked_again = self.overturned = 0   # awareness: the gate's own work, counted
+
+    def hunger(self, level, t):
+        """A level that has not held the field for a day pulls half as hard again."""
+        since = t - self.fed.get(level, self.born if self.born is not None else t)
+        return 1.0 + 0.5 * min(1.0, max(0.0, since) / 86400)
+
+    def beat(self, ws, t):
+        if not self.enabled:
+            return
+        if self.born is None:
+            self.born = t
+        if self.t is not None:
+            self.arousal += (1.0 - self.arousal) * min(1.0, max(0.0, t - self.t) / 600)   # calm returns in ten minutes
+        self.t = t
+        ws.ignite = self.ignite = G['ignite'] / self.arousal
+
+    def modulate(self, c, t):
+        if not self.enabled:
+            return
+        k = c['data'].get('focus')
+        n, until = self.bored.get(k, (0, 0))
+        rel = 0.7 ** n if t <= until else 1.0
+        if c['kind'] == 'reserve':
+            rel = 1.5                                     # a duty is never tuned out
+        who = (c['data'].get('cause') or {}).get('who')
+        lv = level_of(c['kind'], k, who)
+        before, habit = c['sal'], rel
+        rel *= self.hunger(lv, t)                         # a neglected level of being is let in more easily
+        c['sal'] *= rel
+        if habit < 1.0 and before >= self.ignite > c['sal']:
+            # The gate always brakes: what it tunes out it never sees again unless someone looks from outside.
+            # So every fifth thing it tuned out is let through on purpose and judged afresh by the critic.
+            self.tuned_out += 1
+            if self.tuned_out % 5 == 0:
+                c['sal'] = before
+                c['data']['awareness'] = 'looked again at what I had tuned out'
+                self.looked_again += 1
+        c['data']['level'] = lv
+        c['data']['gate'] = {'arousal': round(self.arousal, 2), 'rel': round(rel, 2)}
+        if c['kind'] == 'spike' and c['raw'] >= 2.0 and who in ('unknown', 'operator'):
+            self.arousal = min(2.0, self.arousal + 0.3)   # something strong and not mine: wake up
+
+    def learn(self, m, worth, t):
+        for lv in m.get('levels', ()):
+            self.fed[lv] = m.get('t', t)
+        k = m.get('focus')
+        if worth < 0.4:
+            n = self.bored.get(k, (0, 0))[0]
+            self.bored[k] = (min(n + 1, 6), t + 3600)
+            self.arousal = max(0.5, self.arousal - 0.1)
+        elif worth >= 0.7:
+            self.bored.pop(k, None)
+            self.arousal = min(2.0, self.arousal + 0.1)
+
+
+class Critic:
+    """The inner critic. When a moment closes it asks: was this worth the field? Its verdict, with reasons, is
+    stored in the moment and teaches the gate. It is the first judge, not the last: the brothers judge after it."""
+
+    def __init__(self, gate):
+        self.gate = gate
+        self.recent = []
+
+    def on_close(self, m, t):
+        w, why = 0.3, []
+
+        def add(x, s):
+            nonlocal w
+            w += x
+            why.append(s)
+
+        kind = m.get('kind')
+        who = (m.get('cause_after') or m.get('cause') or {}).get('who')
+        known = (m.get('seen') or {}).get('known')
+        c = m.get('check')
+        if kind == 'reserve':
+            add(0.6, 'my own constancy is at stake')
+        if kind == 'dream':
+            add(0.2, 'a free dream, after duty')
+        if kind == 'growth':
+            add(0.4, 'I changed my own numbers')
+        levels = [m.get('level') or level_of(kind, m.get('focus'), who)]
+        if c and not c['hit']:
+            levels.append(3)                              # the forecast missed: work on meaning
+        when = (m.get('seen') or {}).get('when')
+        if known and when is not None and self.gate.born is not None and when < self.gate.born:
+            levels.append(7)                              # recognised from before this life
+        m['levels'] = sorted(set(levels))
+        if kind == 'spike' and who in ('operator', 'unknown'):
+            add(0.3, 'not my own doing')
+        if kind == 'spike' and who in ('self', 'body'):
+            add(-0.2, 'my own body did it')
+        if known == 0:
+            add(0.3, 'new to me')
+        if c and not c['hit']:
+            add(0.2, 'my forecast missed')
+        if c and c['hit'] and known:
+            add(-0.2, 'known and foreseen')
+        rep = sum(1 for t0, f in self.recent if f == m.get('focus') and m['t'] - t0 < 3600)
+        if rep >= 2:
+            add(-0.3, f'the same thing {rep} times this hour')
+        self.recent.append((m['t'], m.get('focus')))
+        del self.recent[:-200]
+        w = max(0.0, min(1.0, w))
+        if m.get('awareness') and w >= 0.5:
+            why.append('the gate was wrong to tune this out')
+            self.gate.bored.pop(m.get('focus'), None)
+            self.gate.overturned += 1
+        m['critic'] = {'worth': round(w, 2), 'why': why}
+        self.gate.learn(m, w, t)
+
+
 class Dream:
     """Free dreams: what the system may do but does not have to. One is offered to the field only when every
     pool and duty is in order and nothing has needed attention for half an hour. Seeds: <folder>/dreams_free.json

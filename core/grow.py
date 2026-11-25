@@ -133,7 +133,9 @@ def cycle(d, seed=None):
         else:
             t1, h1 = replay(test, best, causes)
             rec['try'] = {'g': best, 'train': bf, 'test': h1}
-            if t1 is not None and t1 >= t0 + GAIN / 2:
+            if h1 and not 0.2 <= h1.get('per_h', 0) <= 6.0:
+                rec['why'] = 'the critic: with these numbers it would see almost nothing or almost everything'
+            elif t1 is not None and t1 >= t0 + GAIN / 2:
                 rec['accepted'] = True
                 new = {'version': cur['version'] + 1, 't': rec['t'], 'g': best, 'from': g,
                        'gain': {'train': round(bs - s0, 3), 'test': round(t1 - t0, 3)}}

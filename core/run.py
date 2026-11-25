@@ -17,7 +17,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from workspace import Workspace                                            # noqa: E402
 import parts                                                               # noqa: E402
-from parts import Senses, SelfModel, Forecast, Memory, Report, Reserve, Dream, Z_UNIT      # noqa: E402
+from parts import Senses, SelfModel, Forecast, Memory, Report, Reserve, Dream, Gate, Critic, Z_UNIT      # noqa: E402
 
 
 class Core:
@@ -31,10 +31,14 @@ class Core:
         self.dream = Dream(d)
         self.started = time.time()
         self.rep = Report(self.ws, self.senses, self.fc, self.started)
+        self.gate = Gate()
+        self.critic = Critic(self.gate)
         self.ws.modulate(self.me.modulate)
+        self.ws.modulate(self.gate.modulate)
         self.ws.subscribe(self.me)
         self.ws.subscribe(self.mem)
         self.ws.subscribe(self.fc)
+        self.ws.subscribe(self.critic)                    # last: it judges the finished moment
         self.genome_m = None
         self.genome()
         self.restored = self.restore()
@@ -54,6 +58,10 @@ class Core:
             if k in g.get('g', {}):
                 parts.G[k] = min(hi, max(lo, g['g'][k]))
         self.ws.ignite = parts.G['ignite']
+        if self.genome_m is not None or g.get('version'):  # a change of my own numbers is a moment of level 6
+            self.ws.post('growth', 'growth', 1.2, {'focus': 'growth:genome', 'v': g.get('version', 0),
+                                                   'e': g.get('version', 0) - 1, 'z': None,
+                                                   'cause': {'who': 'self', 'why': 'I changed my own numbers'}})
         self.genome_m = m
         self.ws.log('life.jsonl', {'t': round(time.time(), 1), 'event': 'genome', 'version': g.get('version'),
                                    'g': parts.G})
@@ -71,6 +79,8 @@ class Core:
                     continue
                 self.fc.learn(m)
                 self.mem.add(m)
+                for lv in m.get('levels', ()):
+                    self.gate.fed[lv] = m.get('t', 0)
                 self.ws.seq = max(self.ws.seq, m.get('id', 0))
                 n += 1
         self.fc.n = 0                      # counters of this life start at zero; the lessons stay
@@ -86,6 +96,7 @@ class Core:
         for k, v, e, z in self.senses.feel(vals, t):
             self.ws.post('senses', 'spike', abs(z) / Z_UNIT, {'focus': k, 'v': round(v, 3), 'e': round(e, 3),
                                                                'z': round(z, 2)})
+        self.gate.beat(self.ws, t)
         self.reserve.look(self.ws, t)
         self.dream.look(self.ws, self.reserve, t)
         return self.ws.tick(t)
@@ -94,6 +105,9 @@ class Core:
         s = self.rep.state(t)
         s['restored'] = self.restored
         s['reserve'] = self.reserve.state
+        s['gate'] = {'arousal': round(self.gate.arousal, 2), 'tuned_out': self.gate.tuned_out,
+                     'looked_again': self.gate.looked_again, 'overturned': self.gate.overturned,
+                     'habits': len(self.gate.bored)}
         tmp = os.path.join(self.ws.d, 'state.json.tmp')
         with open(tmp, 'w', encoding='utf-8') as f:
             json.dump(s, f, ensure_ascii=False)
@@ -141,6 +155,7 @@ def selftest():
     d = tempfile.mkdtemp(prefix='spcore_')
     core = Core(d)
     ws, se, fc = core.ws, core.senses, core.fc
+    core.gate.enabled = False                             # parts first, the gate and the critic at the end
     core.me.cause = lambda t: who[0]                      # the self-model's verdict is given by the test
     who = [{'who': 'operator'}]
     for k in se.gen:                                      # a quiet body
@@ -201,7 +216,39 @@ def selftest():
     assert m and m['kind'] == 'dream' and m['text'] == 'look at the sky at sunrise', m
     ws.close(t + 5011)
     ws.last = dict(ws.last, focus='duty:beat', cause={'who': 'self'}, v=9e9, e=60)
-    # 8. the report speaks from the workspace
+    # 8. the critic judges, the gate learns: a worthless thing is tuned out, a duty never is
+    core.gate.enabled = True
+    core.gate.beat(ws, t + 6000)
+    dull = {'t': t + 6000, 'kind': 'spike', 'focus': 'load1', 'cause': {'who': 'self'}, 'seen': {'known': 1},
+            'check': {'hit': 1}}
+    core.critic.on_close(dull, t + 6010)
+    assert dull['critic']['worth'] < 0.4 and core.gate.bored['load1'][0] == 1, dull
+    c = {'kind': 'spike', 'sal': 1.2, 'raw': 1.2, 'data': {'focus': 'load1', 'cause': {'who': 'self'}}}
+    core.gate.modulate(c, t + 6020)
+    assert c['sal'] < 1.0, 'the gate must tune out what the critic found worthless'
+    c = {'kind': 'reserve', 'sal': 1.0, 'raw': 1.0, 'data': {'focus': 'duty:beat'}}
+    core.gate.modulate(c, t + 6020)
+    assert c['sal'] >= 1.5, 'a duty is never tuned out'
+    core.gate.beat(ws, t + 6021)
+    assert ws.ignite > 1.0, 'after a dull moment the system is a little drowsier'
+    fresh = {'t': t + 6030, 'kind': 'spike', 'focus': 'net_rx', 'cause': {'who': 'unknown'}, 'seen': {'known': 0},
+             'check': {'hit': 0}}
+    core.critic.on_close(fresh, t + 6040)
+    assert fresh['critic']['worth'] >= 0.7, fresh
+    assert fresh['levels'] == [3, 8] and core.gate.fed[8] == fresh['t'], fresh     # no local cause; forecast missed
+    assert parts.level_of('reserve', 'duty:x', 'self') == 4 and parts.level_of('spike', 'cpu', 'operator') == 2
+    assert parts.level_of('spike', 'mem_avail', 'body') == 1 and parts.level_of('spike', 'cpu', 'self') == 5
+    core.gate.bored, core.gate.tuned_out, core.gate.ignite = {'cpu': (2, t + 9000)}, 4, 1.0
+    c = {'kind': 'spike', 'sal': 1.3, 'raw': 1.3, 'data': {'focus': 'cpu', 'cause': {'who': 'operator'}}}
+    core.gate.modulate(c, t + 6050)
+    assert c['sal'] == 1.3 and c['data']['awareness'] and core.gate.looked_again == 1, 'every fifth is looked at again'
+    again2 = {'t': t + 6050, 'kind': 'spike', 'focus': 'cpu', 'cause': {'who': 'operator'}, 'seen': {'known': 0},
+              'awareness': 'x'}
+    core.critic.on_close(again2, t + 6060)
+    assert core.gate.overturned == 1 and 'cpu' not in core.gate.bored, 'the critic can overturn the gate'
+    core.gate.born, core.gate.fed = t, {}
+    assert abs(core.gate.hunger(6, t + 86400) - 1.5) < 1e-9 and core.gate.hunger(6, t) == 1.0, 'hunger of a level'
+    # 9. the report speaks from the workspace
     w = core.rep.words(t + 120)
     assert 'duty:beat' in w and 'cause: self' in w, w
     print('selftest ok:', w)

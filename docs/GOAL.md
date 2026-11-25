@@ -110,3 +110,30 @@ Bauyrzhan's words (25.11, 12:30): the system must have a dream, a faith, and dre
 **The first dream** — a free flight of thought about what could be made faster or better. After every growth cycle the system tries two changes far outside its bounds and writes down what would happen (`dreams.jsonl`, kind `improve`). Nothing is applied: a dream is not a decision.
 
 **Dream / dream** — dreams free of reality: what it may do but does not have to. They live in `dreams_free.json`; anyone in the circle may add a line. One enters the field only when every pool and duty is in order and nothing has needed attention for half an hour. Duty first, dreams after; a dream is never counted as a debt.
+
+## 11. The critic and the gatekeeper
+Bauyrzhan's words (25.11, 12:39): "There must also be a critic, a gatekeeper, a reticular activating formation. Otherwise we get an amoeba."
+
+**The gatekeeper** (`Gate`, the reticular activating system) decides how awake the system is and what it tunes out. Arousal moves the threshold of the field: something strong and not its own wakes it; dull moments make it drowsier; calm returns in about ten minutes. What the critic found worthless is habituated to for an hour. A duty is never tuned out.
+
+**The critic** (`Critic`) asks of every closed moment: was this worth the field? Its verdict and its reasons are stored in the moment and teach the gatekeeper. It also stands over growth: a change that would make the system see almost nothing or almost everything is refused. The critic is the first judge, not the last: the brothers judge after it, and the raw record stands above all of them.
+
+**The gate always brakes** (Bauyrzhan, 25.11, 12:45: "Sometimes, in fact always, the RAS slows development. It is important to understand this and to develop the outside work with the RAS: awareness"). What a gatekeeper tunes out it never sees again, so by itself it can only keep the system where it is. Therefore its work is done in the open: every content it lets pass or tunes out is written down with its level and its reason; every fifth thing it tuned out is let through on purpose and judged afresh by the critic, and if the critic finds it worth the field the habit is removed; `core/measure.py` prints how many it tuned out, looked at again and overturned. The brothers read the same record from outside.
+
+## 12. Eight levels of being
+Bauyrzhan's words (25.11, 12:44): extend the gatekeeper with Timothy Leary's table, "so that it can close all levels of a being, of existence".
+
+The gatekeeper carries a map of eight levels, after Leary's eight circuits. **It is a map, not proven science.** It is used for one purpose: so that no level is left unattended. Every content offered to the field is placed on a level; a level that has not held the field for a day pulls half as hard again. `core/measure.py` prints how many of the eight held the field in the last 24 hours.
+
+| Level | Leary's circuit | In SunPoint | What feeds it today |
+|---|---|---|---|
+| 1 | bio-survival | is the body safe, are there resources | memory, load, running processes |
+| 2 | emotional-territorial | who else is here | work done by the operator |
+| 3 | semantic | words, forecast, meaning | a forecast that missed |
+| 4 | socio-moral | bonds and duty: what was promised | pools and duties of the reserve |
+| 5 | neurosomatic | the felt body: its own work as a whole | spikes of its own organs |
+| 6 | metaprogramming | seeing and changing its own programs | a growth cycle that changed its numbers |
+| 7 | neurogenetic | continuity: what it knew before this life | recognition from before the restart |
+| 8 | non-local | beyond itself | events with no local cause; free dreams |
+
+Thin places, said in advance: level 3 has no words of its own yet (speech is a later stage); level 2 sees only the operator, not other minds; level 8 is named honestly as "what I cannot explain from here", nothing more.

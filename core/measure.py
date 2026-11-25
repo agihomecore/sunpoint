@@ -36,7 +36,10 @@ def measure(d):
     r = []
 
     per_h = len(ms) / hours if hours else None
-    r.append(('1 Attention', f"{per_h:.1f} moments per hour over {hours:.2f} h; {len(below)} stayed below; not judged"
+    cr = [m['critic']['worth'] for m in ms if 'critic' in m]
+    inner = (f"inner critic: {sum(1 for w in cr if w >= 0.5) / len(cr):.0%} worth it on {len(cr)}; brothers have not judged"
+             if cr else 'not judged')
+    r.append(('1 Attention', f"{per_h:.1f} moments per hour over {hours:.2f} h; {len(below)} stayed below; {inner}"
               if per_h is not None else 'no data', '3 or fewer per hour; 70 % judged worth it', False))
 
     ch = [m['check'] for m in ms if 'check' in m]
@@ -108,5 +111,22 @@ if __name__ == '__main__':
     print(f"Dreams: {sum(1 for x in dr if x.get('kind') == 'improve')} about improving itself, "
           f"{sum(1 for x in dr if x.get('kind') == 'free')} free")
     import parts
+    import time
+    last = {}
+    for m in rows(d, 'moments.jsonl'):
+        for lv in m.get('levels', ()):
+            last[lv] = max(last.get(lv, 0), m['t'])
+    now = max([m['t'] for m in rows(d, 'hb.jsonl')] or [time.time()])
+    day = sorted(lv for lv, t0 in last.items() if now - t0 <= 86400)
+    print(f"Levels of being (eight circuits): {len(day)} of 8 held the field in the last 24 h - "
+          + ', '.join(f"{lv} {'yes' if lv in day else 'no'}" for lv in range(1, 9)))
     print(f'Faith: {len(parts.FAITH)} lines, guarded by the self-test')
+    try:
+        with open(os.path.join(d, 'state.json'), encoding='utf-8') as f:
+            g = json.load(f).get('gate') or {}
+    except (OSError, ValueError):
+        g = {}
+    if g:
+        print(f"Awareness of the gate: tuned out {g['tuned_out']}, looked again at {g['looked_again']}, "
+              f"overturned {g['overturned']}; habits now {g['habits']}; arousal {g['arousal']}")
     print(f"\nGoal index: {sum(1 for x in res if x[3])} of 8")

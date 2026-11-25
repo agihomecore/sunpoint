@@ -145,6 +145,17 @@ def cycle(d, seed=None):
                 rec['why'] = 'better on the first part, not on the part it had not seen'
     with open(os.path.join(d, 'grow.jsonl'), 'a', encoding='utf-8') as f:
         f.write(json.dumps(rec, separators=(',', ':')) + '\n')
+    if s0 is not None:                                    # the first dream: a free flight beyond the bounds
+        with open(os.path.join(d, 'dreams.jsonl'), 'a', encoding='utf-8') as f:
+            for _ in range(2):
+                k = rnd.choice(sorted(parts.BOUNDS))
+                c = dict(g)
+                c[k] = g[k] * rnd.choice((0.4, 2.5))
+                c[k] = int(round(c[k])) if k == 'r_keep' else round(c[k], 4)
+                s, fact = replay(train, c, causes)
+                f.write(json.dumps({'t': rec['t'], 'kind': 'improve', 'what_if': {k: c[k]}, 'now': {k: g[k]},
+                                    'score_now': round(s0, 3), 'score_then': None if s is None else round(s, 3),
+                                    'facts': fact, 'note': 'outside the bounds: a dream, not applied'}) + '\n')
     for p in sorted(glob.glob(os.path.join(d, 'raw-*.jsonl')))[:-4]:   # the raw stream is kept for four days
         os.remove(p)
     return rec
@@ -167,6 +178,8 @@ def selftest():
     assert r['now']['train'] and r['now']['train']['checks'] >= MIN_CHECKS, r
     again = cycle(d, seed=2)
     assert again['version'] == (1 if r['accepted'] else 0), again
+    with open(os.path.join(d, 'dreams.jsonl')) as f:
+        assert len(f.readlines()) == 4, 'two dreams per cycle with data'
     print('grow selftest ok:', json.dumps({'first': r['now']['train'], 'accepted': r['accepted'],
                                            'try': (r.get('try') or {}).get('test'), 'why': r.get('why')}))
 

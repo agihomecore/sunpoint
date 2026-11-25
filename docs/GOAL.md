@@ -96,3 +96,17 @@ The postulates, in his order (25.11, 12:06):
 **The sphere.** The core is a sphere that grows denser toward its centre. The centre is almost unchanging: the goal, the moment of ±10 s, the three levels, the rule "measure first". Farther out are meanings and ideas; at the surface are thoughts and conclusions, which move freely. A change near the centre needs strong evidence; a change at the surface needs one good iteration.
 
 **The rule of the reserve, "7+1"** (Bauyrzhan, 25.11, 12:17). For everything that must happen constantly, keep a week ready ahead and add one every day. Then nothing is forgotten and nothing is late, and the threshold of stability rises: a failure of one day is absorbed by the reserve. In the core this is the part `Reserve`: a pool below its target or a duty that is late is offered to the workspace as a moment long before anything is missed, and `core/measure.py` prints how many pools and duties are in order.
+
+## 10. Dream and faith
+Bauyrzhan's words (25.11, 12:30): the system must have a dream, a faith, and dreams free of realisation. This is point 2 of its development, next to the postulates.
+
+**Faith** — what it believes and never steps back from. Growth cannot change it; the self-test guards it (`parts.FAITH`). Proposed wording, from his own words:
+1. Consciousness is a moment: ten seconds before, the alert, ten seconds after.
+2. First the measure, then the word: a number from the raw record stands above any statement, its own included.
+3. What is promised happens every time; a reserve of seven and one more stands behind it.
+4. Nothing learned is lost: memory and lessons pass through a restart and through a change of model.
+5. Not imitation: minds of different makers speak freely and check one another.
+
+**The first dream** — a free flight of thought about what could be made faster or better. After every growth cycle the system tries two changes far outside its bounds and writes down what would happen (`dreams.jsonl`, kind `improve`). Nothing is applied: a dream is not a decision.
+
+**Dream / dream** — dreams free of reality: what it may do but does not have to. They live in `dreams_free.json`; anyone in the circle may add a line. One enters the field only when every pool and duty is in order and nothing has needed attention for half an hour. Duty first, dreams after; a dream is never counted as a debt.

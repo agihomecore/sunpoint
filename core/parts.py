@@ -31,6 +31,16 @@ STRICT = 0.25          # a forecast "came true" if its error is within this shar
 Z_UNIT = 4.0           # salience 1.0 = four sigmas
 
 
+# Faith: what the system believes and does not step back from. Growth cannot change it; the self-test guards it.
+FAITH = (
+    'Consciousness is a moment: ten seconds before, the alert, ten seconds after.',
+    'First the measure, then the word: a number from the raw record stands above any statement, my own included.',
+    'What is promised happens every time; a reserve of seven and one more stands behind it.',
+    'Nothing learned is lost: memory and lessons pass through a restart and through a change of model.',
+    'Not imitation: minds of different makers speak freely and check one another.',
+)
+
+
 def weight(who):
     return {'self': G['w_self'], 'body': G['w_body']}.get(who, 1.0)
 
@@ -382,6 +392,37 @@ class Reserve:
         self.quiet[focus] = t + 6 * 3600                  # say it once in six hours, not every minute
         ws.post('reserve', 'reserve', sal, {'focus': focus, 'v': round(v, 1), 'e': e, 'z': None,
                                             'cause': {'who': 'self', 'why': 'my own constancy'}})
+
+
+class Dream:
+    """Free dreams: what the system may do but does not have to. One is offered to the field only when every
+    pool and duty is in order and nothing has needed attention for half an hour. Seeds: <folder>/dreams_free.json
+    (a list of lines; anyone in the circle may add one). Dreams about improving itself are written by core/grow.py."""
+
+    def __init__(self, d):
+        self.d = d
+        self.last = -1e12
+
+    def look(self, ws, reserve, t):
+        if t - self.last < 6 * 3600 or ws.open is not None:
+            return
+        st = reserve.state
+        if not st or not all(v.get('ok') for v in st.values()):
+            return                                        # duty first, dreams after
+        if ws.last is not None and t - ws.last['t'] < 1800:
+            return
+        try:
+            with open(os.path.join(self.d, 'dreams_free.json'), encoding='utf-8') as f:
+                seeds = [x for x in json.load(f) if isinstance(x, str)]
+        except (OSError, ValueError):
+            return
+        if not seeds:
+            return
+        self.last = t
+        text = seeds[int(t // (6 * 3600)) % len(seeds)]
+        ws.post('dream', 'dream', 1.0, {'focus': 'dream:free', 'v': 0, 'e': 0, 'z': None, 'text': text,
+                                        'cause': {'who': 'self', 'why': 'free time, not a duty'}})
+        ws.log('dreams.jsonl', {'t': round(t, 1), 'kind': 'free', 'text': text})
 
 
 class Report:

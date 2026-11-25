@@ -72,3 +72,4 @@ voice on loudspeakers (13:04).
 - `core/grow.py`: the system grows itself. Seven surface numbers (`parts.G`) may change inside fixed bounds; the moment of ±10 s, the strict test and the code may not. A mutation is kept only if it wins on the first 70 % of the stored stream and on the last 30 % it has not seen. Every cycle is logged, accepted or not. No accepted change yet.
 - `core/parts.py` `Reserve`: the rule "7+1". Pools and duties are described in `reserve.json`; a thin pool or a late duty becomes a moment; `core/measure.py` prints constancy.
 - `Reserve`: a pool may count only what lies ahead (`"ahead": true`, a date in the file name). The plan of the days is itself a pool "7+1": eight day files ahead, one added every evening.
+- Dream and faith (goal, section 10): `parts.FAITH` guarded by the self-test; `Dream` offers a free dream only when every duty is in order; `grow.py` writes two "what if" dreams outside the bounds after every cycle with data.

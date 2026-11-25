@@ -17,7 +17,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from workspace import Workspace                                            # noqa: E402
 import parts                                                               # noqa: E402
-from parts import Senses, SelfModel, Forecast, Memory, Report, Reserve, Z_UNIT      # noqa: E402
+from parts import Senses, SelfModel, Forecast, Memory, Report, Reserve, Dream, Z_UNIT      # noqa: E402
 
 
 class Core:
@@ -28,6 +28,7 @@ class Core:
         self.fc = Forecast(self.senses)
         self.mem = Memory(self.senses)
         self.reserve = Reserve(d)
+        self.dream = Dream(d)
         self.started = time.time()
         self.rep = Report(self.ws, self.senses, self.fc, self.started)
         self.ws.modulate(self.me.modulate)
@@ -86,6 +87,7 @@ class Core:
             self.ws.post('senses', 'spike', abs(z) / Z_UNIT, {'focus': k, 'v': round(v, 3), 'e': round(e, 3),
                                                                'z': round(z, 2)})
         self.reserve.look(self.ws, t)
+        self.dream.look(self.ws, self.reserve, t)
         return self.ws.tick(t)
 
     def beat(self, t):
@@ -185,7 +187,21 @@ def selftest():
     assert m and m['kind'] == 'reserve' and m['focus'] == 'duty:beat', m
     assert core.reserve.state['ready'] == {'ready': 3, 'target': 8, 'ok': False}, core.reserve.state
     ws.close(t + 111)
-    # 6. the report speaks from the workspace
+    # 6. faith: growth cannot touch the centre
+    assert ws.span == 10.0 and parts.STRICT == 0.25 and len(parts.FAITH) == 5, 'the centre must stand'
+    assert not ({'span', 'strict', 'warmup'} & set(parts.BOUNDS)), 'growth must not reach the centre'
+    # 7. a free dream enters only when every duty is in order and the field is quiet
+    with open(os.path.join(d, 'dreams_free.json'), 'w') as f:
+        json.dump(['look at the sky at sunrise'], f)
+    core.dream.look(ws, core.reserve, t + 5000)
+    assert not ws.cands, 'no dreams while a duty is late'
+    core.reserve.state = {'all': {'ok': True}}
+    core.dream.look(ws, core.reserve, t + 5000)
+    m = ws.tick(t + 5000)
+    assert m and m['kind'] == 'dream' and m['text'] == 'look at the sky at sunrise', m
+    ws.close(t + 5011)
+    ws.last = dict(ws.last, focus='duty:beat', cause={'who': 'self'}, v=9e9, e=60)
+    # 8. the report speaks from the workspace
     w = core.rep.words(t + 120)
     assert 'duty:beat' in w and 'cause: self' in w, w
     print('selftest ok:', w)

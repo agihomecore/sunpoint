@@ -9,6 +9,8 @@ import json
 import os
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 
 def rows(d, name):
     p = os.path.join(d, name)
@@ -102,4 +104,9 @@ if __name__ == '__main__':
     for name, now, target, done in res:
         print(f"| {name} | {now} | {target} | {'yes' if done else 'no'} |")
     print('\n' + constancy(d))
+    dr = rows(d, 'dreams.jsonl')
+    print(f"Dreams: {sum(1 for x in dr if x.get('kind') == 'improve')} about improving itself, "
+          f"{sum(1 for x in dr if x.get('kind') == 'free')} free")
+    import parts
+    print(f'Faith: {len(parts.FAITH)} lines, guarded by the self-test')
     print(f"\nGoal index: {sum(1 for x in res if x[3])} of 8")

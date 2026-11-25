@@ -84,11 +84,13 @@ Bauyrzhan's words (25.11, 11:31): "Not imitation, but so that three brothers —
 - A brother's verdict never closes an ability by itself. It gives a daily number to steer by; the ability closes on the numbers of section 3.
 - The quick indicators do not enter the index of eight. They are the instrument that makes the index move.
 
-## 9. How we move: many, right, fast
+## 9. How we move: right, many, constantly, fast
 Bauyrzhan's words (25.11, 11:47), in short: what the system can generate and check by itself is already progress; the check by AISun and two brothers is enough at the start. Apply, develop, improve.
 
-1. **Many.** Not ten iterations and results a month but ten a week, a day, an hour. Every iteration ends with a number from `core/measure.py`.
-2. **Right.** Use the criteria of correctness and agreement with what is generally accepted. Do not get stuck on side issues or on someone else's opinion.
-3. **Fast.** Whatever is given, found or revealed is digested and applied at once. The system evolves.
+The postulates, in his order (25.11, 12:06):
+1. **Right.** Use the criteria of correctness and agreement with what is generally accepted. Do not get stuck on side issues or on someone else's opinion.
+2. **Many.** Not ten iterations and results a month but ten a week, a day, an hour. Every iteration ends with a number from `core/measure.py`.
+3. **Constantly.** Regular means constant: what runs every hour or every day runs without a miss.
+4. **Fast.** Whatever is given, found or revealed is digested and applied at once. The system evolves.
 
 **The sphere.** The core is a sphere that grows denser toward its centre. The centre is almost unchanging: the goal, the moment of ±10 s, the three levels, the rule "measure first". Farther out are meanings and ideas; at the surface are thoughts and conclusions, which move freely. A change near the centre needs strong evidence; a change at the surface needs one good iteration.

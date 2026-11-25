@@ -12,6 +12,7 @@ import glob
 import json
 import math
 import os
+import re
 import time
 
 # The surface of the sphere: numbers the system may change by itself (core/grow.py), inside these bounds.
@@ -336,7 +337,7 @@ class Reserve:
     """The rule of the reserve (Bauyrzhan, 25.11.2026): for everything that must happen constantly keep a week
     ready ahead and add one every day - "7+1". A thin reserve or a late duty is offered to the workspace
     long before anything is missed. Described in <folder>/reserve.json:
-      {"pools":  [{"name": "...", "glob": "/path/*.mp4", "target": 8}],
+      {"pools":  [{"name": "...", "glob": "/path/*.mp4", "target": 8, "ahead": false}],
        "duties": [{"name": "...", "file": "/path/log", "every_s": 3600}]}"""
 
     def __init__(self, d):
@@ -356,7 +357,11 @@ class Reserve:
             return
         st = {}
         for p in cfg.get('pools', []):
-            n, target = len(glob.glob(p['glob'])), p.get('target', 8)
+            files = glob.glob(p['glob'])
+            if p.get('ahead'):                            # count only what lies ahead: a date YYYYMMDD in the name
+                today = time.strftime('%Y%m%d', time.localtime(t))
+                files = [f for f in files if (re.search(r'(\d{8})', os.path.basename(f)) or [None, ''])[1] >= today]
+            n, target = len(files), p.get('target', 8)
             st[p['name']] = {'ready': n, 'target': target, 'ok': n >= target}
             if n < target:
                 self.offer(ws, t, 'reserve:' + p['name'], n, target, 1.0 + (target - n) / target)

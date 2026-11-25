@@ -82,10 +82,24 @@ def measure(d):
     return r
 
 
+def constancy(d):
+    try:
+        with open(os.path.join(d, 'state.json'), encoding='utf-8') as f:
+            st = json.load(f).get('reserve') or {}
+    except (OSError, ValueError):
+        st = {}
+    if not st:
+        return 'Constancy (reserve 7+1): no pools or duties are described yet'
+    ok = sum(1 for v in st.values() if v.get('ok'))
+    return f"Constancy (reserve 7+1): {ok} of {len(st)} pools and duties in order - " + '; '.join(
+        f"{k}: {'ok' if v.get('ok') else 'THIN OR LATE'}" for k, v in sorted(st.items()))
+
+
 if __name__ == '__main__':
     d = sys.argv[1] if len(sys.argv) > 1 else os.environ.get('SUNPOINT_CORE_DIR', 'core_window')
     res = measure(d)
     print('| Ability | Now | Target | Reached |\n|---|---|---|---|')
     for name, now, target, done in res:
         print(f"| {name} | {now} | {target} | {'yes' if done else 'no'} |")
+    print('\n' + constancy(d))
     print(f"\nGoal index: {sum(1 for x in res if x[3])} of 8")

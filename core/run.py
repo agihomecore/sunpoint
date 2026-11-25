@@ -17,7 +17,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from workspace import Workspace                                            # noqa: E402
 import parts                                                               # noqa: E402
-from parts import Senses, SelfModel, Forecast, Memory, Report, Z_UNIT      # noqa: E402
+from parts import Senses, SelfModel, Forecast, Memory, Report, Reserve, Z_UNIT      # noqa: E402
 
 
 class Core:
@@ -27,6 +27,7 @@ class Core:
         self.me = SelfModel()
         self.fc = Forecast(self.senses)
         self.mem = Memory(self.senses)
+        self.reserve = Reserve(d)
         self.started = time.time()
         self.rep = Report(self.ws, self.senses, self.fc, self.started)
         self.ws.modulate(self.me.modulate)
@@ -84,11 +85,13 @@ class Core:
         for k, v, e, z in self.senses.feel(vals, t):
             self.ws.post('senses', 'spike', abs(z) / Z_UNIT, {'focus': k, 'v': round(v, 3), 'e': round(e, 3),
                                                                'z': round(z, 2)})
+        self.reserve.look(self.ws, t)
         return self.ws.tick(t)
 
     def beat(self, t):
         s = self.rep.state(t)
         s['restored'] = self.restored
+        s['reserve'] = self.reserve.state
         tmp = os.path.join(self.ws.d, 'state.json.tmp')
         with open(tmp, 'w', encoding='utf-8') as f:
             json.dump(s, f, ensure_ascii=False)
@@ -171,9 +174,20 @@ def selftest():
     again = Core(d)
     assert again.restored == ws.n_moments and abs(again.fc.r_hat('cpu') - 0.3) < 0.05, 'lessons must survive'
     assert len(again.mem.past) == ws.n_moments and again.ws.seq == ws.seq, 'memory must survive'
-    # 5. the report speaks from the workspace
-    w = core.rep.words(t + 11)
-    assert 'cause: operator' in w and 'sure' in w, w
+    # 5. the reserve: a thin pool and a late duty reach the field before anything is missed
+    for i in range(3):
+        open(os.path.join(d, f'ready_{i}.x'), 'w').close()
+    with open(os.path.join(d, 'reserve.json'), 'w') as f:
+        json.dump({'pools': [{'name': 'ready', 'glob': os.path.join(d, 'ready_*.x'), 'target': 8}],
+                   'duties': [{'name': 'beat', 'file': os.path.join(d, 'no_such_file'), 'every_s': 60}]}, f)
+    core.reserve.look(ws, t + 100)
+    m = ws.tick(t + 100)
+    assert m and m['kind'] == 'reserve' and m['focus'] == 'duty:beat', m
+    assert core.reserve.state['ready'] == {'ready': 3, 'target': 8, 'ok': False}, core.reserve.state
+    ws.close(t + 111)
+    # 6. the report speaks from the workspace
+    w = core.rep.words(t + 120)
+    assert 'duty:beat' in w and 'cause: self' in w, w
     print('selftest ok:', w)
 
 

@@ -8,6 +8,8 @@ Report     who I am, what I noticed, what I expect - from the workspace, in word
 
 Stdlib only.
 """
+import glob
+import json
 import math
 import os
 import time
@@ -328,6 +330,53 @@ class Memory:
         if 'vec' in m:
             self.past.append((m.get('focus'), m['vec'], m.get('t')))
             del self.past[:-self.keep]
+
+
+class Reserve:
+    """The rule of the reserve (Bauyrzhan, 25.11.2026): for everything that must happen constantly keep a week
+    ready ahead and add one every day - "7+1". A thin reserve or a late duty is offered to the workspace
+    long before anything is missed. Described in <folder>/reserve.json:
+      {"pools":  [{"name": "...", "glob": "/path/*.mp4", "target": 8}],
+       "duties": [{"name": "...", "file": "/path/log", "every_s": 3600}]}"""
+
+    def __init__(self, d):
+        self.d = d
+        self.last = 0.0
+        self.quiet = {}
+        self.state = {}
+
+    def look(self, ws, t):
+        if t - self.last < 60:
+            return
+        self.last = t
+        try:
+            with open(os.path.join(self.d, 'reserve.json'), encoding='utf-8') as f:
+                cfg = json.load(f)
+        except (OSError, ValueError):
+            return
+        st = {}
+        for p in cfg.get('pools', []):
+            n, target = len(glob.glob(p['glob'])), p.get('target', 8)
+            st[p['name']] = {'ready': n, 'target': target, 'ok': n >= target}
+            if n < target:
+                self.offer(ws, t, 'reserve:' + p['name'], n, target, 1.0 + (target - n) / target)
+        for q in cfg.get('duties', []):
+            try:
+                age = t - os.path.getmtime(q['file'])
+            except OSError:
+                age = float('inf')
+            late = age > 1.5 * q['every_s']
+            st[q['name']] = {'age_s': None if age == float('inf') else int(age), 'every_s': q['every_s'], 'ok': not late}
+            if late:
+                self.offer(ws, t, 'duty:' + q['name'], min(age, 9e9), q['every_s'], 2.0)
+        self.state = st
+
+    def offer(self, ws, t, focus, v, e, sal):
+        if t < self.quiet.get(focus, 0):
+            return
+        self.quiet[focus] = t + 6 * 3600                  # say it once in six hours, not every minute
+        ws.post('reserve', 'reserve', sal, {'focus': focus, 'v': round(v, 1), 'e': e, 'z': None,
+                                            'cause': {'who': 'self', 'why': 'my own constancy'}})
 
 
 class Report:

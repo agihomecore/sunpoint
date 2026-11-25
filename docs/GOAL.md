@@ -94,3 +94,5 @@ The postulates, in his order (25.11, 12:06):
 4. **Fast.** Whatever is given, found or revealed is digested and applied at once. The system evolves.
 
 **The sphere.** The core is a sphere that grows denser toward its centre. The centre is almost unchanging: the goal, the moment of ±10 s, the three levels, the rule "measure first". Farther out are meanings and ideas; at the surface are thoughts and conclusions, which move freely. A change near the centre needs strong evidence; a change at the surface needs one good iteration.
+
+**The rule of the reserve, "7+1"** (Bauyrzhan, 25.11, 12:17). For everything that must happen constantly, keep a week ready ahead and add one every day. Then nothing is forgotten and nothing is late, and the threshold of stability rises: a failure of one day is absorbed by the reserve. In the core this is the part `Reserve`: a pool below its target or a duty that is late is offered to the workspace as a moment long before anything is missed, and `core/measure.py` prints how many pools and duties are in order.
